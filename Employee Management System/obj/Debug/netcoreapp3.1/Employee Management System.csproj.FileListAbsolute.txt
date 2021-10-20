@@ -1,0 +1,129 @@
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\appsettings.json
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\snappy32.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\snappy64.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\libzstd.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Employee Management System.exe
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Employee Management System.deps.json
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Employee Management System.runtimeconfig.json
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Employee Management System.runtimeconfig.dev.json
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Employee Management System.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Employee Management System.pdb
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Employee Management System.Views.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Employee Management System.Views.pdb
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\DnsClient.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\SharpCompress.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\runtimes\linux\native\libmongocrypt.so
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\runtimes\osx\native\libmongocrypt.dylib
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\runtimes\win\native\mongocrypt.dll
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.csproj.AssemblyReference.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.AssemblyInfoInputs.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.AssemblyInfo.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.csproj.CoreCompileInputs.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.MvcApplicationPartsAssemblyInfo.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.RazorAssemblyInfo.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.RazorAssemblyInfo.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\staticwebassets\Employee Management System.StaticWebAssets.Manifest.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\staticwebassets\Employee Management System.StaticWebAssets.xml
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\scopedcss\bundle\Employee Management System.styles.css
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.TagHelpers.input.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.TagHelpers.output.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.RazorCoreGenerate.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.RazorTargetAssemblyInfo.cache
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.RazorTargetAssemblyInfo.cs
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.Views.pdb
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.csproj.CopyComplete
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.dll
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.pdb
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Employee Management System.genruntimeconfig.cache
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\dotnet-aspnet-codegenerator-design.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\employee-management-system\Employee Management System\obj\Debug\netcoreapp3.1\Razor\Views\Platform\Index.cshtml.g.cs
