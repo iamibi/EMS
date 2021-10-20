@@ -6411,11 +6411,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\.NET\\employee-management-system\\Employee Management System\\Employee Management System.csproj",
+      "projectUniqueName": "D:\\.NET\\EMS\\Employee Management System\\Employee Management System.csproj",
       "projectName": "Employee Management System",
-      "projectPath": "D:\\.NET\\employee-management-system\\Employee Management System\\Employee Management System.csproj",
+      "projectPath": "D:\\.NET\\EMS\\Employee Management System\\Employee Management System.csproj",
       "packagesPath": "C:\\Users\\Darth Vader\\.nuget\\packages\\",
-      "outputPath": "D:\\.NET\\employee-management-system\\Employee Management System\\obj\\",
+      "outputPath": "D:\\.NET\\EMS\\Employee Management System\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Darth Vader\\AppData\\Roaming\\NuGet\\NuGet.Config",
