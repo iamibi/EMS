@@ -1,0 +1,133 @@
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.csproj.AssemblyReference.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.AssemblyInfoInputs.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.AssemblyInfo.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.csproj.CoreCompileInputs.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.RazorAssemblyInfo.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.RazorAssemblyInfo.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\staticwebassets\Employee Management System.StaticWebAssets.Manifest.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\staticwebassets\Employee Management System.StaticWebAssets.xml
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\scopedcss\bundle\Employee Management System.styles.css
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.TagHelpers.input.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.TagHelpers.output.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.RazorCoreGenerate.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Platform\Index.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.RazorTargetAssemblyInfo.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.RazorTargetAssemblyInfo.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.dll
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\ref\Employee Management System.dll
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.pdb
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\appsettings.Development.json
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\appsettings.json
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\snappy32.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\snappy64.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\libzstd.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Employee Management System.deps.json
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Employee Management System.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ref\Employee Management System.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Employee Management System.pdb
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Employee Management System.Views.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Employee Management System.Views.pdb
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.Views.pdb
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.csproj.CopyComplete
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Employee Management System.exe
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Employee Management System.runtimeconfig.json
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Employee Management System.runtimeconfig.dev.json
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\DnsClient.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Humanizer.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\dotnet-aspnet-codegenerator-design.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\MongoDB.Bson.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\MongoDB.Driver.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\MongoDB.Driver.Core.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\MongoDB.Libmongocrypt.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\SharpCompress.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\System.Composition.Convention.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\System.Composition.Hosting.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\System.Composition.Runtime.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\System.Composition.TypedParts.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.MvcApplicationPartsAssemblyInfo.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.genruntimeconfig.cache

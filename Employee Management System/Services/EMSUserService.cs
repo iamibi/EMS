@@ -42,9 +42,9 @@ namespace Employee_Management_System.Services
             return EMSUserCollection.CountDocuments(EMSUser => true);
         }
 
-        public List<EMSUser> GetEMSUsersByManager(string ManagerEmail)
+        public List<EMSUser> GetEMSUsersByManager(string ManagerEmailId)
         {
-            return EMSUserCollection.Find(EMSUser => EMSUser.ManagerEmail == ManagerEmail).ToList();
+            return EMSUserCollection.Find(EMSUser => EMSUser.ManagerEmailId == ManagerEmailId).ToList();
         }
 
         public void UpdateEMSUserByEmail(string EmailId, Dictionary<string, object> Fields, Dictionary<string, object> UpdateHash)

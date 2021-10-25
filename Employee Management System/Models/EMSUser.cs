@@ -53,6 +53,6 @@ namespace Employee_Management_System.Models
 
         [Required]
         [BsonElement(EMSModels.ManagerEmailId)]
-        public string ManagerEmail { get; set; } = null;
+        public string ManagerEmailId { get; set; } = null;
     }
 }

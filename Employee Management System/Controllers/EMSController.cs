@@ -6,10 +6,8 @@ namespace Employee_Management_System.Controllers
 {
     public class EMSController : Controller
     {
-        public EMSController(EMSUserHelpers UserHelpers, EMSTaskHelpers TaskHelpers)
+        public EMSController()
         {
-            Helpers helper = new Helpers();
-            helper.UserHelper = UserHelpers;
         }
 
         // GET: PlatformController
