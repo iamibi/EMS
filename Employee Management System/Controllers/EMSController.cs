@@ -6,6 +6,8 @@ namespace Employee_Management_System.Controllers
 {
     public class EMSController : Controller
     {
+        private readonly PlatformHelpers Platform = new PlatformHelpers();
+
         public EMSController()
         {
         }
@@ -14,6 +16,29 @@ namespace Employee_Management_System.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [Route("login")]
+        [HttpPost]
+        public ActionResult Login(string emailId, string password)
+        {
+            if (Platform.ValidateEMSUserCredentials(emailId, password))
+            {
+                HttpContext.Session.SetString("emailId", emailId);
+                return View("Success");
+            }
+
+            // Need to display error here.
+            ViewBag.error = "Invalid Email or Password";
+            return View("Index");
+        }
+
+        [Route("logout")]
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Remove("emailId");
+            return View("Index");
         }
 
         // GET: PlatformController/Details/5

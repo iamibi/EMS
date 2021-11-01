@@ -13,7 +13,6 @@ D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management Syst
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.RazorCoreGenerate.cache
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Platform\Index.cshtml.g.cs
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -131,3 +130,4 @@ D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\osx\native\libm
 D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.MvcApplicationPartsAssemblyInfo.cache
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.genruntimeconfig.cache
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\EMS\Index.cshtml.g.cs
