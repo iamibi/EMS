@@ -22,7 +22,7 @@ namespace Employee_Management_System.Controllers
         [HttpPost]
         public ActionResult Login(string emailId, string password)
         {
-            if (Platform.ValidateEMSUserCredentials(emailId, password))
+            if (Platform.ValidateEMSUserCredentials(emailId.Trim(), password.Trim()))
             {
                 HttpContext.Session.SetString("emailId", emailId);
                 return View("Success");
