@@ -89,11 +89,11 @@ namespace Employee_Management_System.Platform
             }
         }
 
-        public void RegisterNewUser(Dictionary<string, object> accessContext, Dictionary<string, object> userParams)
+        public void RegisterNewUser(RegisterViewModel registerUser)
         {
             try
             {
-                CreateUser(userParams);
+                CreateUser(registerUser);
             }
             catch
             {
@@ -102,36 +102,31 @@ namespace Employee_Management_System.Platform
             }
         }
 
-        public void RegisterNewUserRequest(EMSUser userObj)
-        {
-
-        }
-
-        private EMSUser CreateUser(Dictionary<string, object> userParams)
+        private EMSUser CreateUser(RegisterViewModel userParams)
         {
             EMSUser newUser = new EMSUser();
             DateTime currentTime = DateTime.UtcNow;
 
-            newUser.FirstName = userParams["first_name"] as string;
-            newUser.LastName = userParams["last_name"] as string;
+            newUser.FirstName = userParams.FirstName;
+            newUser.LastName = userParams.LastName;
             newUser.CreatedAt = currentTime;
             newUser.UpdatedAt = currentTime;
-            newUser.PhoneNumber = userParams["phone_number"] as string;
+            newUser.PhoneNumber = userParams.PhoneNumber;
 
             // Check whether the email id is valid or not.
-            string emailId = userParams["email_id"] as string;
+            string emailId = userParams.Email;
             if (!Util.IsEmailValid(emailId))
                 throw new Exception("Invalid Email Id Passed.");
             newUser.EmailId = emailId;
 
             // Verify that the role is present in the ENUM.
-            string role = userParams["role"] as string;
+            string role = EMSUserRoles.Employee.ToString();
             if (!Enum.IsDefined(typeof(EMSUserRoles), role))
                 throw new Exception("Invalid Role Passed");
             newUser.Role = role;
 
             // Get the password as SecureString.
-            SecureString password = new NetworkCredential("", userParams["password"] as string).SecurePassword;
+            SecureString password = new NetworkCredential("", userParams.Password).SecurePassword;
             if (!Util.IsPasswordSecure(password))
                 throw new Exception("Insecure Password.");
             PasswordHasherUtil PwHash = new PasswordHasherUtil(password);

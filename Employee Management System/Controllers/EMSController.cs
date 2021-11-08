@@ -27,7 +27,7 @@ namespace Employee_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                System.Diagnostics.Debug.WriteLine("Login email: " + registerModel.Email);
+                PlatformHelper.RegisterNewUser(registerModel);
             }
             return View();
         }
