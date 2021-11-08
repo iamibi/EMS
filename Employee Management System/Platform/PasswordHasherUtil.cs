@@ -13,14 +13,13 @@ namespace Employee_Management_System.Platform
         public string Salt { get; set; }
         public string Digest { get; set; }
 
-        public PasswordHasherUtil(SecureString Password, byte[] ProvidedSalt = null)
+        public PasswordHasherUtil(string password, byte[] providedSalt = null)
         {
-            string StrPassword = Password.ToString();
-            byte[] Salt = ProvidedSalt;
-            if (ProvidedSalt == null)
+            byte[] Salt = providedSalt;
+            if (providedSalt == null)
                 Salt = GenerateRandomSalt();
 
-            byte[] Digest = ApplyPBKDF2Algo(StrPassword, Salt);
+            byte[] Digest = ApplyPBKDF2Algo(password, Salt);
             this.Salt = Convert.ToBase64String(Salt);
             this.Digest = Convert.ToBase64String(Digest);
         }

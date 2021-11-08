@@ -5,7 +5,6 @@
 @{
     ViewBag.Title = "Register";
 }
-
 <h2>Register</h2>
 
 
@@ -19,23 +18,23 @@
         </div><br />
         <div class="row">
             <div class="col-lg-2">@Html.LabelFor(a => a.FirstName)</div>
-            <div class="col-lg-10">@Html.TextBoxFor(a => a.FirstName, new { @class = "form-control" })</div>
+            <div class="col-lg-10">@Html.TextBoxFor(a => a.FirstName, new { @class = "form-control", autocomplete = "off", maxlength = 50 })</div>
         </div><br />
         <div class="row">
             <div class="col-lg-2">@Html.LabelFor(a => a.LastName)</div>
-            <div class="col-lg-10">@Html.TextBoxFor(a => a.LastName, new { @class = "form-control" })</div>
+            <div class="col-lg-10">@Html.TextBoxFor(a => a.LastName, new { @class = "form-control", autocomplete = "off", maxlength = 50 })</div>
         </div><br />
         <div class="row">
             <div class="col-lg-2">@Html.LabelFor(a => a.PhoneNumber)</div>
-            <div class="col-lg-10">@Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control" })</div>
+            <div class="col-lg-10">@Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control", autocomplete = "off", maxlength = 50 })</div>
         </div><br />
         <div class="row">
             <div class="col-lg-2">@Html.LabelFor(a => a.Email)</div>
-            <div class="col-lg-10">@Html.TextBoxFor(a => a.Email, new { @class = "form-control" })</div>
+            <div class="col-lg-10">@Html.TextBoxFor(a => a.Email, new { @class = "form-control", autocomplete = "off", maxlength = 50 })</div>
         </div><br />
         <div class="row">
             <div class="col-lg-2">@Html.LabelFor(a => a.Password)</div>
-            <div class="col-lg-10">@Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "Password" })</div>
+            <div class="col-lg-10">@Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "Password", autocomplete = "off", maxlength = 50 })</div>
         </div><br />
         <input type="submit" value="Register" class="btn btn-primary" />
     }

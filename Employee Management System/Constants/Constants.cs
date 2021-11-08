@@ -5,6 +5,7 @@
         public const string EMSDb = "EMSDb";
         public const string EMSUsers = "EMSUsers";
         public const string EMSTasks = "EMSTasks";
+        public const string EMSDbConnection = "mongodb://localhost:27017";
     }
 
     public class EMSModels

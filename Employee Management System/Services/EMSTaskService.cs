@@ -3,6 +3,8 @@ using Employee_Management_System.Models;
 using MongoDB.Driver;
 using Employee_Management_System.Constants;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Employee_Management_System.Services
 {
@@ -12,8 +14,17 @@ namespace Employee_Management_System.Services
 
         public EMSTaskService()
         {
-            IMongoDatabase database = DatabaseConfigurations.GetCollection();
-            EMSTaskCollection = database.GetCollection<EMSTask>(Database.EMSTasks);
+            try
+            {
+                MongoClient client = new MongoClient(Database.EMSDbConnection);
+                IMongoDatabase database = client.GetDatabase(Database.EMSDb);
+                EMSTaskCollection = database.GetCollection<EMSTask>(Database.EMSTasks);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error occurred while creating connection: " + ex.Message + "\nStacktrace:\n" + ex.StackTrace);
+                throw new Exception("DB Connection Error in EMS Task Service.");
+            }
         }
 
         public EMSTask GetEMSTaskById(string TaskId)

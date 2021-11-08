@@ -2,6 +2,8 @@
 using MongoDB.Driver;
 using Employee_Management_System.Constants;
 using System.Collections.Generic;
+using System;
+using Microsoft.Extensions.Configuration;
 
 namespace Employee_Management_System.Services
 {
@@ -12,14 +14,23 @@ namespace Employee_Management_System.Services
         // Initialize the EMS User Service and setup database connection.
         public EMSUserService()
         {
-            IMongoDatabase database = DatabaseConfigurations.GetCollection();
-            EMSUserCollection = database.GetCollection<EMSUser>(Database.EMSUsers);
+            try
+            {
+                MongoClient client = new MongoClient(Database.EMSDbConnection);
+                IMongoDatabase database = client.GetDatabase(Database.EMSDb);
+                EMSUserCollection = database.GetCollection<EMSUser>(Database.EMSUsers);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error occurred while creating connection: " + ex.Message + "\nStacktrace:\n" + ex.StackTrace);
+                throw new Exception("DB Connection Error in EMS User Service.");
+            }
         }
 
-        public EMSUser CreateEMSUser(EMSUser NewUser)
+        public EMSUser CreateEMSUser(EMSUser newUser)
         {
-            EMSUserCollection.InsertOne(NewUser);
-            return NewUser;
+            EMSUserCollection.InsertOne(newUser);
+            return newUser;
         }
 
         public EMSUser GetEMSUserByEmail(string EmailId)

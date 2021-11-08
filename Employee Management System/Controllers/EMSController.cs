@@ -36,7 +36,7 @@ namespace Employee_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                System.Diagnostics.Debug.WriteLine("Login id: " + loginModel.Email);
+                PlatformHelper.ValidateEMSUserCredentials(loginModel.Email.Trim(), loginModel.Password.Trim());
             }
             return View();
         }

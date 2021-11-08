@@ -95,8 +95,9 @@ namespace Employee_Management_System.Platform
             {
                 CreateUser(registerUser);
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine("Error occurred: " + ex.Message + "\nStacktrace: " + ex.StackTrace);
                 // Log Here
                 throw new Exception("Unable to create a new user.");
             }
@@ -126,11 +127,10 @@ namespace Employee_Management_System.Platform
             newUser.Role = role;
 
             // Get the password as SecureString.
-            SecureString password = new NetworkCredential("", userParams.Password).SecurePassword;
-            if (!Util.IsPasswordSecure(password))
+            if (!Util.IsPasswordSecure(userParams.Password))
                 throw new Exception("Insecure Password.");
-            PasswordHasherUtil PwHash = new PasswordHasherUtil(password);
-            password.Dispose();
+            PasswordHasherUtil PwHash = new PasswordHasherUtil(userParams.Password);
+            userParams.Password = string.Empty;
 
             // Store the password digest.
             newUser.PasswordHash = PwHash.Digest;
