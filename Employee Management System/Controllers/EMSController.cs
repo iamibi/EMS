@@ -1,113 +1,44 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Employee_Management_System.Models;
 using Employee_Management_System.Platform;
 
 namespace Employee_Management_System.Controllers
 {
     public class EMSController : Controller
     {
-        private readonly PlatformHelpers Platform = new PlatformHelpers();
+        private readonly PlatformHelpers PlatformHelper = new PlatformHelpers();
 
-        public EMSController()
-        {
-        }
-
-        // GET: PlatformController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
 
-        [Route("login")]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult Login(string emailId, string password)
+        public ActionResult SaveRegisterDetails(RegisterViewModel registerModel)
         {
-            if (Platform.ValidateEMSUserCredentials(emailId.Trim(), password.Trim()))
+            if (ModelState.IsValid)
             {
-                HttpContext.Session.SetString("emailId", emailId);
-                return View("Success");
+                System.Diagnostics.Debug.WriteLine("Login email: " + registerModel.Email);
             }
-
-            // Need to display error here.
-            ViewBag.error = "Invalid Email or Password";
-            return View("Index");
-        }
-
-        [Route("logout")]
-        [HttpGet]
-        public ActionResult Logout()
-        {
-            HttpContext.Session.Remove("emailId");
-            return View("Index");
-        }
-
-        // GET: PlatformController/Details/5
-        public ActionResult Details(int id)
-        {
             return View();
         }
 
-        // GET: PlatformController/Create
-        public ActionResult Create()
+        public ActionResult Login(LoginViewModel loginModel)
         {
+            if (ModelState.IsValid)
+            {
+                System.Diagnostics.Debug.WriteLine("Login id: " + loginModel.Email);
+            }
             return View();
-        }
-
-        // POST: PlatformController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: PlatformController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: PlatformController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: PlatformController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: PlatformController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

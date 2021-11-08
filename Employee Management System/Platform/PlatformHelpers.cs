@@ -102,6 +102,11 @@ namespace Employee_Management_System.Platform
             }
         }
 
+        public void RegisterNewUserRequest(EMSUser userObj)
+        {
+
+        }
+
         private EMSUser CreateUser(Dictionary<string, object> userParams)
         {
             EMSUser newUser = new EMSUser();

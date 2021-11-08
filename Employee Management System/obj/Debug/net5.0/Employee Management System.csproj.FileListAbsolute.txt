@@ -131,3 +131,6 @@ D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\runtimes\win\native\mong
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.MvcApplicationPartsAssemblyInfo.cache
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Employee Management System.genruntimeconfig.cache
 D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\EMS\Index.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\EMS\Login.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\obj\Debug\net5.0\Razor\Views\EMS\Register.cshtml.g.cs
+D:\.NET\EMS\Employee Management System\bin\Debug\net5.0\web.config

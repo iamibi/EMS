@@ -23,6 +23,11 @@ namespace Employee_Management_System.Controllers
             return View();
         }
 
+        public IActionResult btnLogin_Clicked()
+        {
+            return RedirectToAction("Login");
+        }
+
         public IActionResult Privacy()
         {
             return View();

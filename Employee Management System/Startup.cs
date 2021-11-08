@@ -25,6 +25,7 @@ namespace Employee_Management_System
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddScoped<DatabaseConfigurations>();
         }
 
@@ -52,7 +53,7 @@ namespace Employee_Management_System
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=EMS}/{action=Index}/{id?}");
             });
         }
     }
