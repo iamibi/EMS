@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Employee_Management_System.Models;
 using Employee_Management_System.Platform;
+using Microsoft.AspNetCore.Http;
 
 namespace Employee_Management_System.Controllers
 {
@@ -27,18 +28,38 @@ namespace Employee_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                PlatformHelper.RegisterNewUser(registerModel);
+                if (PlatformHelper.RegisterNewUser(registerModel))
+                {
+                    HttpContext.Session.SetString("username", registerModel.Email);
+                    return RedirectToAction("Success");
+                }
             }
+            return View(registerModel);
+        }
+
+        public ActionResult Login()
+        {
             return View();
         }
 
+        [HttpPost]
         public ActionResult Login(LoginViewModel loginModel)
         {
             if (ModelState.IsValid)
             {
-                PlatformHelper.ValidateEMSUserCredentials(loginModel.Email.Trim(), loginModel.Password.Trim());
+                if (PlatformHelper.ValidateEMSUserCredentials(loginModel.Email.Trim(), loginModel.Password.Trim()))
+                {
+                    HttpContext.Session.SetString("username", loginModel.Email);
+                    return RedirectToAction("Success");
+                }
             }
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Remove("username");
+            return RedirectToAction("Index");
         }
     }
 }

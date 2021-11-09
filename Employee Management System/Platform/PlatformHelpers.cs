@@ -89,11 +89,12 @@ namespace Employee_Management_System.Platform
             }
         }
 
-        public void RegisterNewUser(RegisterViewModel registerUser)
+        public bool RegisterNewUser(RegisterViewModel registerUser)
         {
             try
             {
                 CreateUser(registerUser);
+                return true;
             }
             catch (Exception ex)
             {
