@@ -36,22 +36,36 @@ namespace Employee_Management_System.Platform
             }
         }
 
-        public List<EMSTask> GetAllTasksForUser(Dictionary<string, object> accessContext, string employeeId)
+        public List<EMSTask> GetAllTasksForUser(string emailId)
         {
             try
             {
-                return PlatformServices.TaskService.GetEMSTasksForEMSUser(employeeId);
+                EMSUser user = PlatformServices.UserService.GetEMSUserByEmail(emailId);
+                return PlatformServices.TaskService.GetEMSTasksForEMSUser(user.EmployeeId);
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
                 // Log here
-                throw new System.InvalidOperationException();
+                throw new DbFetchFailed();
             }
         }
 
-        public void UpdateTaskStatusOfUser(Dictionary<string, object> accessContext, string employeeId, EMSTaskStatus taskStatus)
+        public bool UpdateTaskStatusOfUser(string emailId, EmployeeViewModel employeeVM)
         {
-            
+            if (!Util.IsEmailValid(emailId)) return false;
+
+            try
+            {
+                PlatformServices.TaskService.UpdateTaskById(employeeVM.TaskId, employeeVM.TaskStatus.ToString());
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+                throw new DbFetchFailed("Error occurred while performing action on database.");
+            }
+
+            return true;
         }
 
         public Dictionary<string, long> GetCompletedTaskCount(Dictionary<string, object> accessContext, string managerEmailId)
@@ -108,21 +122,65 @@ namespace Employee_Management_System.Platform
             if (user != null)
                 throw new UserAlreadyExists();
 
+            EMSUser storedUser;
             try
             {
-                CreateUser(registerUser);
-                return true;
+                storedUser = CreateUser(registerUser);
             }
             catch (PasswordNotStrongEnough pw)
             {
-                throw new PasswordNotStrongEnough("Please improve the password strength.");
+                throw new UserCreationFailed("Please improve the password strength.");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Error occurred: " + ex.Message + "\nStacktrace: " + ex.StackTrace);
+                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
                 // Log Here
-                throw new Exception("Unable to create a new user.");
+                throw new UserCreationFailed("Unable to create a new user.");
             }
+
+            if (storedUser == null)
+                throw new DbFetchFailed("Unable to fetch the user.");
+
+            try
+            {
+                // Create initial task for the user.
+                CreateInitialTasksForUser(storedUser);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+                throw new TaskCreationFailed(ex.Message);
+            }
+
+            return true;
+        }
+
+        private EMSTask[] CreateInitialTasksForUser(EMSUser storedUser)
+        {
+            int taskCount = 5;
+            DateTime currentTime = DateTime.UtcNow;
+            EMSTask[] tasks = new EMSTask[taskCount];
+
+            for (int i = 0; i < taskCount; i++)
+            {
+                EMSTask task = new EMSTask();
+                task.EmployeeId = storedUser.EmployeeId.ToString();
+                task.Status = EMSTaskStatus.Open.ToString();
+                task.TaskDescription = $"Task number: {i}";
+                task.UpdatedAt = currentTime;
+
+                try
+                {
+                    EMSTask storedTask = PlatformServices.TaskService.CreateTask(task);
+                    tasks[i] = storedTask;
+                }
+                catch (Exception ex)
+                {
+                    throw new DbFetchFailed(ex.Message);
+                }
+            }
+
+            return tasks;
         }
 
         private EMSUser CreateUser(RegisterViewModel userParams)

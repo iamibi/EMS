@@ -66,6 +66,35 @@ namespace Employee_Management_System.Controllers
             return View();
         }
 
+        public ActionResult EmployeeView()
+        {
+            if (ModelState.IsValid)
+            {
+                string emailId = HttpContext.Session.GetString("username");
+                if (emailId.Trim() == string.Empty) return View("Error/Failure");
+
+                ViewBag.EmployeeTasks = PlatformHelper.GetAllTasksForUser(emailId.Trim());
+                return View();
+            }
+            return View("Error/Failure");
+        }
+
+        [HttpPost]
+        public ActionResult EmployeeView(EmployeeViewModel employeeVM)
+        {
+            if (ModelState.IsValid)
+            {
+                string emailId = HttpContext.Session.GetString("username");
+                if (emailId.Trim() == string.Empty) return View("Error/Failure");
+
+                // Verify the task update.
+                if (PlatformHelper.UpdateTaskStatusOfUser(emailId, employeeVM))
+                    return View();
+            }
+
+            return View("Error/Failure");
+        }
+
         public ActionResult Logout()
         {
             HttpContext.Session.Remove("username");

@@ -49,8 +49,10 @@ namespace Employee_Management_System.Services
             return task;
         }
 
-        public void UpdateTaskById(string TaskId, Dictionary<string, object> UpdateDictionary)
+        public void UpdateTaskById(string taskId, string taskStatus)
         {
+            UpdateDefinition<EMSTask> updateDefinition = $"{{ $set: {{ uat: {DateTime.UtcNow}, st: {taskStatus} }} }}";
+            EMSTaskCollection.UpdateOne(EMSTask => EMSTask.TaskId == taskId, updateDefinition);
         }
 
         public void RemoveTaskById(string TaskId)

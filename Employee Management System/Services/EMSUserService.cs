@@ -30,7 +30,7 @@ namespace Employee_Management_System.Services
         public EMSUser CreateEMSUser(EMSUser newUser)
         {
             EMSUserCollection.InsertOne(newUser);
-            return newUser;
+            return GetEMSUserByEmail(newUser.EmailId);
         }
 
         public EMSUser GetEMSUserByEmail(string EmailId)

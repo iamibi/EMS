@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Employee Management System";
+}
+@model EmployeeViewModel
+@using Employee_Management_System.Constants
+
+<body>
+    
+    <div class="row">
+        <div class="col-lg-2">@Html.Label
+        <div class="col-lg-2">@Html.DropDownListFor(m => m.TaskStatus, new SelectList(Enum.GetValues(typeof(EMSTaskStatus)), "Task Status"));</div>
+</div>
+</body>

@@ -18,6 +18,10 @@ namespace Employee_Management_System.Models
         [Required]
         public string EmployeeId { get; set; }
 
+        [BsonElement(EMSModels.TaskDescription)]
+        [Required]
+        public string TaskDescription { get; set; }
+
         [BsonElement(EMSModels.Status)]
         [Required]
         public string Status { get; set; }

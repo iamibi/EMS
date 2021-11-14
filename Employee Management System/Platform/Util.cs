@@ -23,6 +23,11 @@ namespace Employee_Management_System.Platform
             }
         }
 
+        public static string ExceptionWithBacktrace(string message, Exception ex)
+        {
+            return $"[ERROR] {message}\n{ex.Message}\nStacktrace: {(ex.InnerException != null ? ex.InnerException.StackTrace : ex.StackTrace)}";
+        }
+
         public static bool IsPasswordSecure(string password)
         {
             return IsValidPassword(password, new PasswordOptions());

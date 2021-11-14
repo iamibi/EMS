@@ -22,6 +22,7 @@
         public const string ManagerEmailId = "emng";
         public const string EmployeeId = "emp_id";
         public const string Status = "st";
+        public const string TaskDescription = "td";
     }
 
     public enum EMSUserRoles
