@@ -68,5 +68,14 @@ namespace Employee_Management_System.Controllers
             HttpContext.Session.Remove("username");
             return RedirectToAction("Index");
         }
+
+        [Route("/EMS/HandleError/{code:int}")]
+        public IActionResult HandleError(int code)
+        {
+            ViewData["ErrorMessage"] = $"Error occurred. The ErrorCode is: {code}";
+            if (code == 404)
+                return View("Error/PageNotFound");
+            return View("Error/Failure");
+        }
     }
 }
