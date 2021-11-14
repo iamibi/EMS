@@ -24,6 +24,15 @@
             <div class="col-lg-10">@Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "Password", autocomplete = "off" })</div>
         </div><br />
         <input type="submit" value="Login" class="btn btn-primary" />
+        <br />
+        <br />
+
+        @if (ViewBag.ErrorMessage != string.Empty)
+        {
+            <div class="row">
+                <label for="error_message">@ViewBag.ErrorMessage</label>
+            </div>
+        }
     }
 
 </div>

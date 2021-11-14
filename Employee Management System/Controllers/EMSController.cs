@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Employee_Management_System.Models;
 using Employee_Management_System.Platform;
 using Microsoft.AspNetCore.Http;
@@ -52,6 +48,8 @@ namespace Employee_Management_System.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel loginModel)
         {
+            ViewBag.ErrorMessage = string.Empty;
+
             if (ModelState.IsValid)
             {
                 if (PlatformHelper.ValidateEMSUserCredentials(loginModel.Email.Trim(), loginModel.Password.Trim()))
@@ -59,7 +57,12 @@ namespace Employee_Management_System.Controllers
                     HttpContext.Session.SetString("username", loginModel.Email);
                     return View("Success");
                 }
+                else
+                {
+                    ViewBag.ErrorMessage = "Invalid Username or Password";
+                }
             }
+            
             return View();
         }
 
