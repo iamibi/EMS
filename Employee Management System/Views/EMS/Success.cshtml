@@ -10,6 +10,11 @@
     <h3>Success Page</h3>
     Welcome @Context.Session.GetString("username")
     <br>
+    
+            @if (Context.Session.GetString("username") != null)
+            {
+                @Html.ActionLink("Log out", "Logout", "EMS");
+            }
 
 </body>
 </html>

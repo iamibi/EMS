@@ -2,8 +2,6 @@
 using Employee_Management_System.Models;
 using System.Collections.Generic;
 using Employee_Management_System.Constants;
-using System.Security;
-using System.Net;
 
 namespace Employee_Management_System.Platform
 {
@@ -11,14 +9,16 @@ namespace Employee_Management_System.Platform
     {
         public bool ValidateEMSUserCredentials(string emailId, string password)
         {
-            if (emailId == null || password == null || emailId == "" || password == "" || !Util.IsEmailValid(emailId))
-                return false;
+            if (emailId == null || password == null || emailId == "" || password == "" || !Util.IsEmailValid(emailId)) return false;
 
             // TODO: Check the log file for failed attempts by that user.
 
             EMSUser user = PlatformServices.UserService.GetEMSUserByEmail(emailId);
-            if (user == null)
-                return false;
+            if (user == null) return false;
+
+            // Check the password hash.
+            PasswordHasherUtil PwHash = new PasswordHasherUtil(password, user.Salt);
+            if (PwHash.Digest != user.PasswordHash) return false;
 
             return true;
         }
@@ -91,10 +91,31 @@ namespace Employee_Management_System.Platform
 
         public bool RegisterNewUser(RegisterViewModel registerUser)
         {
+            
+            // Validate the user's email and verify that the user doesn't already exist on the platform.
+            if (registerUser.Email == null || registerUser.Email.Trim() == "") return false;
+            EMSUser user;
+
+            try
+            {
+                user = PlatformServices.UserService.GetEMSUserByEmail(registerUser.Email.Trim());
+            }
+            catch (Exception ex)
+            {
+                throw new DbFetchFailed(ex.Message, ex.InnerException);
+            }
+
+            if (user != null)
+                throw new UserAlreadyExists();
+
             try
             {
                 CreateUser(registerUser);
                 return true;
+            }
+            catch (PasswordNotStrongEnough pw)
+            {
+                throw new PasswordNotStrongEnough("Please improve the password strength.");
             }
             catch (Exception ex)
             {
@@ -116,7 +137,7 @@ namespace Employee_Management_System.Platform
             newUser.PhoneNumber = userParams.PhoneNumber;
 
             // Check whether the email id is valid or not.
-            string emailId = userParams.Email;
+            string emailId = userParams.Email.Trim();
             if (!Util.IsEmailValid(emailId))
                 throw new Exception("Invalid Email Id Passed.");
             newUser.EmailId = emailId;
@@ -127,9 +148,9 @@ namespace Employee_Management_System.Platform
                 throw new Exception("Invalid Role Passed");
             newUser.Role = role;
 
-            // Get the password as SecureString.
-            if (!Util.IsPasswordSecure(userParams.Password))
-                throw new Exception("Insecure Password.");
+            // Check the password string.
+            if (!Util.IsPasswordSecure(userParams.Password.Trim()))
+                throw new PasswordNotStrongEnough();
             PasswordHasherUtil PwHash = new PasswordHasherUtil(userParams.Password);
             userParams.Password = string.Empty;
 

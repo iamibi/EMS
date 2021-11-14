@@ -17,11 +17,11 @@
 
         <div class="row">
             <div class="col-lg-2">@Html.LabelFor(a => a.Email)</div>
-            <div class="col-lg-10">@Html.TextBoxFor(a => a.Email, new { @class = "form-control" })</div>
+            <div class="col-lg-10">@Html.TextBoxFor(a => a.Email, new { @class = "form-control", autocomplete = "off" })</div>
         </div><br />
         <div class="row">
             <div class="col-lg-2">@Html.LabelFor(a => a.Password)</div>
-            <div class="col-lg-10">@Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "Password" })</div>
+            <div class="col-lg-10">@Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "Password", autocomplete = "off" })</div>
         </div><br />
         <input type="submit" value="Login" class="btn btn-primary" />
     }

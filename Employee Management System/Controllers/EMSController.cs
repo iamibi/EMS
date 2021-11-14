@@ -28,13 +28,20 @@ namespace Employee_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (PlatformHelper.RegisterNewUser(registerModel))
+                try
                 {
-                    HttpContext.Session.SetString("username", registerModel.Email);
-                    return RedirectToAction("Success");
+                    if (PlatformHelper.RegisterNewUser(registerModel))
+                    {
+                        HttpContext.Session.SetString("first_name", registerModel.FirstName);
+                        return RedirectToAction("RegisterSuccessful");
+                    }
+                }
+                catch
+                {
+                    return View("Error/Failure");
                 }
             }
-            return View(registerModel);
+            return View("Error/Failure");
         }
 
         public ActionResult Login()
@@ -50,7 +57,7 @@ namespace Employee_Management_System.Controllers
                 if (PlatformHelper.ValidateEMSUserCredentials(loginModel.Email.Trim(), loginModel.Password.Trim()))
                 {
                     HttpContext.Session.SetString("username", loginModel.Email);
-                    return RedirectToAction("Success");
+                    return View("Success");
                 }
             }
             return View();
