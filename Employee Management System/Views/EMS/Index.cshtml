@@ -4,11 +4,11 @@
 @{
     ViewBag.Title = "Home";
 }
+@using Microsoft.AspNetCore.Http;
 
-@if (User.Identity.IsAuthenticated)
+@if (ViewBag.username != null && ViewBag.username != string.Empty)
 {
-
-    <span>Welcome @Html.Encode(User.Identity.Name) </span>
+    Context.Response.Redirect("/EmployeeView");
 }
 else
 {

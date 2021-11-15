@@ -38,6 +38,9 @@ namespace Employee_Management_System.Platform
 
         public List<EMSTask> GetAllTasksForUser(string emailId)
         {
+            if (!Util.IsEmailValid(emailId))
+                throw new InvalidOperationException();
+
             try
             {
                 EMSUser user = PlatformServices.UserService.GetEMSUserByEmail(emailId);

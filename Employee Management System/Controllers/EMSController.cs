@@ -11,6 +11,7 @@ namespace Employee_Management_System.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.username = HttpContext.Session.GetString("username");
             return View();
         }
 
@@ -55,7 +56,7 @@ namespace Employee_Management_System.Controllers
                 if (PlatformHelper.ValidateEMSUserCredentials(loginModel.Email.Trim(), loginModel.Password.Trim()))
                 {
                     HttpContext.Session.SetString("username", loginModel.Email);
-                    return View("Success");
+                    return EmployeeView();
                 }
                 else
                 {
@@ -70,11 +71,11 @@ namespace Employee_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                string emailId = HttpContext.Session.GetString("username");
-                if (emailId.Trim() == string.Empty) return View("Error/Failure");
+                string emailId = HttpContext.Session.GetString("username").Trim();
+                if (emailId == string.Empty) return View("Error/Failure");
 
-                ViewBag.EmployeeTasks = PlatformHelper.GetAllTasksForUser(emailId.Trim());
-                return View();
+                ViewBag.EmployeeTasks = PlatformHelper.GetAllTasksForUser(emailId);
+                return View("EmployeeView");
             }
             return View("Error/Failure");
         }
@@ -84,12 +85,15 @@ namespace Employee_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                string emailId = HttpContext.Session.GetString("username");
-                if (emailId.Trim() == string.Empty) return View("Error/Failure");
+                string emailId = HttpContext.Session.GetString("username").Trim();
+                if (emailId == string.Empty) return View("Error/Failure");
 
                 // Verify the task update.
                 if (PlatformHelper.UpdateTaskStatusOfUser(emailId, employeeVM))
+                {
+                    ViewBag.EmployeeTask = PlatformHelper.GetAllTasksForUser(emailId);
                     return View();
+                }
             }
 
             return View("Error/Failure");
@@ -97,7 +101,11 @@ namespace Employee_Management_System.Controllers
 
         public ActionResult Logout()
         {
-            HttpContext.Session.Remove("username");
+            foreach(var cookie in Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookie);
+            }
+            HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
 
