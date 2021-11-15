@@ -1,0 +1,30 @@
+﻿@model ManagerViewModel
+
+<table id="manager_table">
+    <thead>
+        <tr>
+            <td>Email Id</td>
+            <td>Task Completed Count</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var userTask in ViewBag.usersTasks)
+        {
+            <tr>
+                <td>@userTask.Key</td>
+                <td>@userTask.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<br />
+<div class="row">
+    @Html.ActionLink("Add new user", "AddUserToManager", "EMS")
+</div>
+
+<style type="text/css">
+    td {
+        padding: 0 15px;
+    }
+</style>

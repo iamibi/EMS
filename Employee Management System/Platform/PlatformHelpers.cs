@@ -23,6 +23,18 @@ namespace Employee_Management_System.Platform
             return true;
         }
 
+        public EMSUser GetUser(string emailId)
+        {
+            try
+            {
+                return PlatformServices.UserService.GetEMSUserByEmail(emailId);
+            }
+            catch (Exception ex)
+            {
+                throw new DbFetchFailed("", ex);
+            }
+        }
+
         public List<EMSUser> GetAllUsers(Dictionary<string, object> accessContext)
         {
             try
@@ -54,6 +66,41 @@ namespace Employee_Management_System.Platform
             }
         }
 
+        public List<EMSUser> GetAvailableUsers(string managerEmailId)
+        {
+            if (!Util.IsEmailValid(managerEmailId)) throw new InvalidOperationException();
+
+            EMSUser user = PlatformServices.UserService.GetEMSUserByEmail(managerEmailId);
+            if (user.Role != EMSUserRoles.Manager.ToString()) throw new Exception("Invalid access");
+
+            try
+            {
+                return PlatformServices.UserService.GetAvailableUsers(managerEmailId);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+                // Log here
+                throw new DbFetchFailed();
+            }
+        }
+
+        public bool AddUserForManager(string managerEmailId, string employeeEmailId)
+        {
+            if (!Util.IsEmailValid(managerEmailId) || !Util.IsEmailValid(employeeEmailId)) return false;
+
+            try
+            {
+                PlatformServices.UserService.AddUserForManager(managerEmailId, employeeEmailId);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+                throw new DbFetchFailed(ex.Message, ex);
+            }
+        }
+
         public bool UpdateTaskStatusOfUser(string emailId, EmployeeViewModel employeeVM)
         {
             if (!Util.IsEmailValid(emailId)) return false;
@@ -71,7 +118,7 @@ namespace Employee_Management_System.Platform
             return true;
         }
 
-        public Dictionary<string, long> GetCompletedTaskCount(Dictionary<string, object> accessContext, string managerEmailId)
+        public Dictionary<string, long> GetCompletedTaskCount(string managerEmailId)
         {
             Dictionary<string, long> taskCounts = new Dictionary<string, long>();
 
@@ -91,12 +138,15 @@ namespace Employee_Management_System.Platform
             }
         }
 
-        public void RemoveUser(Dictionary<string, object> accessContext, string employeeId)
+        public void RemoveUser(string emailId)
         {
+            if (!Util.IsEmailValid(emailId)) throw new InvalidOperationException("The email id is not valid.");
+
             try
             {
-                List<EMSTask> EmployeeTasks = PlatformServices.TaskService.GetEMSTasksForEMSUser(employeeId);
-                PlatformServices.UserService.RemoveEMSUserById(employeeId);
+                EMSUser user = PlatformServices.UserService.GetEMSUserByEmail(emailId);
+                List<EMSTask> EmployeeTasks = PlatformServices.TaskService.GetEMSTasksForEMSUser(user.EmployeeId);
+                PlatformServices.UserService.RemoveEMSUserById(user.EmployeeId);
                 PlatformServices.TaskService.RemoveAllTask(EmployeeTasks);
             }
             catch
@@ -144,6 +194,9 @@ namespace Employee_Management_System.Platform
             if (storedUser == null)
                 throw new DbFetchFailed("Unable to fetch the user.");
 
+            // Return early if the role is not employee.
+            if (storedUser.Role != EMSUserRoles.Employee.ToString()) return true;
+
             try
             {
                 // Create initial task for the user.
@@ -152,6 +205,11 @@ namespace Employee_Management_System.Platform
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+
+                // Remove the user from the database as task creation failed.
+                // This makes sure that we don't have inconsistent data in the database.
+                PlatformServices.UserService.RemoveEMSUserByEmail(storedUser.EmailId);
+
                 throw new TaskCreationFailed(ex.Message);
             }
 

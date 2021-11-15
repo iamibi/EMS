@@ -7,7 +7,7 @@ namespace Employee_Management_System.Models
     {
         [Required]
         [Display(Name = "Task Status")]
-        public EMSTaskStatus TaskStatus { get; set; }
+        public string TaskStatus { get; set; }
 
         [Required]
         [Display(Name = "Task Description")]
@@ -15,6 +15,6 @@ namespace Employee_Management_System.Models
 
         [Required]
         [Display(Name = "Task Id")]
-        public string TaskId { get; }
+        public string TaskId { get; set; }
     }
 }

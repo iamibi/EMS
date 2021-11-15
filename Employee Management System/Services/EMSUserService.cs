@@ -3,7 +3,6 @@ using MongoDB.Driver;
 using Employee_Management_System.Constants;
 using System.Collections.Generic;
 using System;
-using Microsoft.Extensions.Configuration;
 
 namespace Employee_Management_System.Services
 {
@@ -53,9 +52,22 @@ namespace Employee_Management_System.Services
             return EMSUserCollection.CountDocuments(EMSUser => true);
         }
 
+        public List<EMSUser> GetAvailableUsers(string managerEmailId)
+        {
+            return EMSUserCollection.Find(
+                EMSUser => EMSUser.ManagerEmailId == null && EMSUser.EmailId != managerEmailId && EMSUser.Role == EMSUserRoles.Employee.ToString()
+            ).ToList();
+        }
+
         public List<EMSUser> GetEMSUsersByManager(string ManagerEmailId)
         {
             return EMSUserCollection.Find(EMSUser => EMSUser.ManagerEmailId == ManagerEmailId).ToList();
+        }
+
+        public void AddUserForManager(string managerEmailId, string employeeEmailId)
+        {
+            var update = Builders<EMSUser>.Update.Set(EMSUser => EMSUser.ManagerEmailId, managerEmailId).CurrentDate(EMSUser => EMSUser.UpdatedAt);
+            EMSUserCollection.UpdateOne(EMSUser => EMSUser.EmailId == employeeEmailId, update);
         }
 
         public void UpdateEMSUserByEmail(string EmailId, Dictionary<string, object> Fields, Dictionary<string, object> UpdateHash)

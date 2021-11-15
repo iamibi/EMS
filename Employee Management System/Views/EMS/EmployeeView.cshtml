@@ -1,47 +1,59 @@
-﻿@{
+﻿@model EmployeeViewModel
+@using Employee_Management_System.Constants
+@{
     ViewBag.Title = "Employee Management System";
 }
-@model EmployeeViewModel
-@using Employee_Management_System.Constants
 
 
-@using (Html.BeginForm("EmployeeView", "EMS", FormMethod.Post, new { id = "EmpView", name = "EmpView" }))
-{
-    @foreach (EMSTask task in ViewBag.EmployeeTasks)
-    {
-        <div class="col-lg-10">
-            <div class="col-lg-2">@Html.LabelFor(m => m.TaskId)</div>
-            <div class="col-lg-2">@task.TaskId</div>
-            <div class="col-lg-2">@Html.LabelFor(m => m.TaskDescription)</div>
-            <div class="col-lg-2">@task.TaskDescription</div>
-            <div class="col-lg-2">@Html.LabelFor(m => m.TaskStatus)</div>
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.TaskId)</th>
+            <th>@Html.DisplayNameFor(m => m.TaskDescription)</th>
+            <th>@Html.DisplayNameFor(m => m.TaskStatus)</th>
+        </tr>
+    </thead>
+    <tbody>
 
-            @{
-                List<SelectListItem> listItems = new List<SelectListItem>();
-                foreach (EMSTaskStatus status in Enum.GetValues(typeof(EMSTaskStatus)))
-                {
-                    SelectListItem listItem = new SelectListItem()
+        @foreach (EMSTask task in ViewBag.EmployeeTasks)
+        {
+            <tr>
+                <td>@Html.DisplayFor(em => task.TaskId)</td>
+                <td>@Html.DisplayFor(em => task.TaskDescription)</td>
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    foreach (EMSTaskStatus status in Enum.GetValues(typeof(EMSTaskStatus)))
                     {
-                        Text = status.ToString(),
-                        Value = status.ToString(),
-                        Selected = (status.ToString() == task.Status ? true : false)
-                    };
-                    listItems.Add(listItem);
+                        SelectListItem listItem = new SelectListItem()
+                        {
+                            Text = status.ToString(),
+                            Value = status.ToString(),
+                            Selected = (status.ToString().Equals(task.Status) ? true : false)
+                        };
+                        listItems.Add(listItem);
+                    }
                 }
-            }
 
-            <div class="col-lg-2">@Html.DropDownListFor(m => m.TaskStatus, listItems, new { onchange = "SelectedIndexChanged()" })</div>
-        </div>
-    }
-    <br />
-    <br />
-}
+                <td>@Html.DropDownListFor(em => task.Status, listItems)</td>
+                @using (Html.BeginForm("EmployeeView", "EMS", FormMethod.Post))
+                {
+                    <td><input type="submit" value="Add" class="btn btn-primary" /></td>
+                }
+            </tr>
+        }
+
+    </tbody>
+</table>
+<br />
+<br />
 
 @Html.ActionLink("Log out", "Logout", "EMS")
 
 <script type="text/javascript">
-    function SelectedIndexChanged() {
-        //Form post
-        document.EmpView.submit();
+</script>
+
+<style type="text/css">
+    td {
+        padding: 0 15px;
     }
-</script> 
+</style>

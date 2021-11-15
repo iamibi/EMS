@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Employee_Management_System.Models;
 using Employee_Management_System.Platform;
+using Employee_Management_System.Constants;
 using Microsoft.AspNetCore.Http;
 
 namespace Employee_Management_System.Controllers
@@ -11,8 +12,15 @@ namespace Employee_Management_System.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.username = HttpContext.Session.GetString("username");
-            return View();
+            string emailId = HttpContext.Session.GetString("username");
+            ViewBag.username = emailId;
+            EMSUser user = PlatformHelper.GetUser(emailId);
+            if (user == null && emailId == null) return View();
+            else if (user.Role == EMSUserRoles.Employee.ToString()) return EmployeeView();
+            else if (user.Role == EMSUserRoles.Manager.ToString()) return ManagerView();
+            else if (user.Role == EMSUserRoles.IT_Department.ToString()) return ITDepartmentView();
+
+            return View("Error/PageNotFound");
         }
 
         public ActionResult Register()
@@ -30,7 +38,7 @@ namespace Employee_Management_System.Controllers
                     if (PlatformHelper.RegisterNewUser(registerModel))
                     {
                         HttpContext.Session.SetString("first_name", registerModel.FirstName);
-                        return RedirectToAction("RegisterSuccessful");
+                        return View("RegisterSuccessful");
                     }
                 }
                 catch
@@ -53,10 +61,19 @@ namespace Employee_Management_System.Controllers
 
             if (ModelState.IsValid)
             {
-                if (PlatformHelper.ValidateEMSUserCredentials(loginModel.Email.Trim(), loginModel.Password.Trim()))
+                string emailId = loginModel.Email.Trim();
+                string password = loginModel.Password.Trim();
+
+                if (PlatformHelper.ValidateEMSUserCredentials(emailId, password))
                 {
-                    HttpContext.Session.SetString("username", loginModel.Email);
-                    return EmployeeView();
+                    HttpContext.Session.SetString("username", emailId);
+
+                    EMSUser user = PlatformHelper.GetUser(emailId);
+                    if (user == null) return View("Error/Failure");
+                    if (user.Role == EMSUserRoles.Employee.ToString()) return EmployeeView();
+                    else if (user.Role == EMSUserRoles.Manager.ToString()) return ManagerView();
+                    else if (user.Role == EMSUserRoles.IT_Department.ToString()) return ITDepartmentView();
+                    else return View("Error/PageNotFound");
                 }
                 else
                 {
@@ -67,6 +84,7 @@ namespace Employee_Management_System.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult EmployeeView()
         {
             if (ModelState.IsValid)
@@ -97,6 +115,62 @@ namespace Employee_Management_System.Controllers
             }
 
             return View("Error/Failure");
+        }
+
+        [HttpGet]
+        public ActionResult ManagerView()
+        {
+            if (!ModelState.IsValid) return View("Error/Faliure");
+
+            string emailId = HttpContext.Session.GetString("username").Trim();
+            if (emailId == string.Empty) return View("Error/Failure");
+
+            var userWithCompletedTaskCount = PlatformHelper.GetCompletedTaskCount(emailId);
+            if (userWithCompletedTaskCount == null) return View("Error/PageNotFound");
+            ViewBag.usersTasks = userWithCompletedTaskCount;
+
+            return View("ManagerView");
+        }
+
+        [HttpPost]
+        public ActionResult ManagerView(ManagerViewModel managerVM)
+        {
+            if (!ModelState.IsValid) return View("Error/Failure");
+            
+            return View();
+        }
+
+        public ActionResult AddUserToManager()
+        {
+            string managerEmailId = HttpContext.Session.GetString("username");
+            ViewBag.usersList = PlatformHelper.GetAvailableUsers(managerEmailId);
+            return View("AddUserToManager");
+        }
+
+        [HttpPost]
+        public ActionResult AddUserToManager(string emailId)
+        {
+            string managerEmailId = HttpContext.Session.GetString("username");
+            if (emailId != null && emailId.Trim() != string.Empty && managerEmailId != null && managerEmailId.Trim() != string.Empty)
+            {
+                PlatformHelper.AddUserForManager(managerEmailId, emailId);
+                HttpContext.Session.SetString("first_name", emailId);
+                return View("RegisterSuccessful");
+            }
+
+            return View("Error/PageNotFound");
+        }
+
+        [HttpGet]
+        public ActionResult ITDepartmentView()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ITDepartmentView(ITDepartmentViewModel itDepartmentVM)
+        {
+            return View();
         }
 
         public ActionResult Logout()
