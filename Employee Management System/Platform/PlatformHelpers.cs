@@ -23,6 +23,14 @@ namespace Employee_Management_System.Platform
             return true;
         }
 
+        public bool ValidateUser(string emailId)
+        {
+            if (emailId == null || emailId.Trim() == string.Empty || !Util.IsEmailValid(emailId)) return false;
+            EMSUser user = GetUser(emailId);
+            if (user == null) return false;
+            return true;
+        }
+
         public EMSUser GetUser(string emailId)
         {
             try
@@ -35,16 +43,40 @@ namespace Employee_Management_System.Platform
             }
         }
 
-        public List<EMSUser> GetAllUsers(Dictionary<string, object> accessContext)
+        public bool IsAdmin(string emailId)
         {
+            if (!Util.IsEmailValid(emailId)) return false;
+
+            EMSUser user;
             try
             {
-                return PlatformServices.UserService.GetAllEMSUsers();
+                 user = PlatformServices.UserService.GetEMSUserByEmail(emailId);
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+                throw new DbFetchFailed();
+            }
+
+            if (user == null) return false;
+            if (user.Role != EMSUserRoles.IT_Department.ToString()) return false;
+
+            return true;
+        }
+
+        public List<EMSUser> GetAllUsers(string adminEmailId)
+        {
+            if (!Util.IsEmailValid(adminEmailId))
+                throw new InvalidOperationException();
+
+            try
+            {
+                return PlatformServices.UserService.GetAllEMSUsers(adminEmailId);
             }
             catch
             {
                 // Log here
-                throw new System.InvalidOperationException();
+                throw new DbFetchFailed();
             }
         }
 
@@ -138,13 +170,20 @@ namespace Employee_Management_System.Platform
             }
         }
 
-        public void RemoveUser(string emailId)
+        public void RemoveUser(string adminEmailId, string emailId)
         {
             if (!Util.IsEmailValid(emailId)) throw new InvalidOperationException("The email id is not valid.");
 
             try
             {
                 EMSUser user = PlatformServices.UserService.GetEMSUserByEmail(emailId);
+
+                if (user.Role == EMSUserRoles.Manager.ToString())
+                {
+                    List<EMSUser> usersWithManager = PlatformServices.UserService.GetEMSUsersByManager(emailId, true);
+                    PlatformServices.UserService.RemoveManagerFromUsers(emailId);
+                    return;
+                }
                 List<EMSTask> EmployeeTasks = PlatformServices.TaskService.GetEMSTasksForEMSUser(user.EmployeeId);
                 PlatformServices.UserService.RemoveEMSUserById(user.EmployeeId);
                 PlatformServices.TaskService.RemoveAllTask(EmployeeTasks);
@@ -152,7 +191,7 @@ namespace Employee_Management_System.Platform
             catch
             {
                 // Log here
-                throw new System.InvalidOperationException();
+                throw new DbFetchFailed();
             }
         }
 

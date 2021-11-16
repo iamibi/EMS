@@ -3,7 +3,6 @@ using Employee_Management_System.Models;
 using MongoDB.Driver;
 using Employee_Management_System.Constants;
 using System.Linq;
-using Microsoft.Extensions.Configuration;
 using System;
 
 namespace Employee_Management_System.Services
@@ -54,9 +53,6 @@ namespace Employee_Management_System.Services
             var update = Builders<EMSTask>.Update.Set(EMSTask => EMSTask.Status, taskStatus).CurrentDate(EMSTask => EMSTask.UpdatedAt);
             EMSTaskCollection.UpdateOne(EMSTask => EMSTask.TaskId == taskId, update);
         }
-
-        public void RemoveTaskById(string TaskId)
-        { }
 
         public async void RemoveAllTask(List<EMSTask> Tasks)
         {

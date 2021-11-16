@@ -164,11 +164,29 @@ namespace Employee_Management_System.Controllers
         [HttpGet]
         public ActionResult ITDepartmentView()
         {
-            return View();
+            if (!ModelState.IsValid) return View("Error/Failure");
+            string emailId = HttpContext.Session.GetString("username");
+            if (!PlatformHelper.IsAdmin(emailId)) return View("Error/Failure");
+
+            var users = PlatformHelper.GetAllUsers(emailId);
+            ViewBag.Users = users;
+            return View("ITDepartmentView");
         }
 
         [HttpPost]
-        public ActionResult ITDepartmentView(ITDepartmentViewModel itDepartmentVM)
+        public ActionResult ITDepartmentView(string emailId)
+        {
+            if (!ModelState.IsValid) return View("Error/Failure");
+            string adminEmailId = HttpContext.Session.GetString("username");
+            if (!PlatformHelper.ValidateUser(emailId) || !PlatformHelper.ValidateUser(adminEmailId)) return View("Error/Failure");
+
+            PlatformHelper.RemoveUser(adminEmailId, emailId);
+            ViewBag.EmailId = emailId;
+            return View("AccountRemoved");
+        }
+
+        [HttpGet]
+        public ActionResult AccountRemoved()
         {
             return View();
         }

@@ -42,9 +42,10 @@ namespace Employee_Management_System.Services
             return EMSUserCollection.Find(EMSUser => EMSUser.EmployeeId == EmployeeId).FirstOrDefault();
         }
 
-        public List<EMSUser> GetAllEMSUsers()
+        public List<EMSUser> GetAllEMSUsers(string emailId = null)
         {
-            return EMSUserCollection.Find(EMSUser => true).ToList();
+            if (emailId == null) return EMSUserCollection.Find(EMSUser => true).ToList();
+            return EMSUserCollection.Find(EMSUser => EMSUser.EmailId != emailId).ToList();
         }
 
         public long GetEMSUsersCount()
@@ -59,8 +60,13 @@ namespace Employee_Management_System.Services
             ).ToList();
         }
 
-        public List<EMSUser> GetEMSUsersByManager(string ManagerEmailId)
+        public List<EMSUser> GetEMSUsersByManager(string ManagerEmailId, bool onlyEmails = false)
         {
+            if (onlyEmails)
+            {
+                var fields = Builders<EMSUser>.Projection.Include(p => p.EmailId);
+                return EMSUserCollection.Find(EMSUser => EMSUser.ManagerEmailId == ManagerEmailId).Project<EMSUser>(fields).ToList();
+            }
             return EMSUserCollection.Find(EMSUser => EMSUser.ManagerEmailId == ManagerEmailId).ToList();
         }
 
@@ -70,15 +76,10 @@ namespace Employee_Management_System.Services
             EMSUserCollection.UpdateOne(EMSUser => EMSUser.EmailId == employeeEmailId, update);
         }
 
-        public void UpdateEMSUserByEmail(string EmailId, Dictionary<string, object> Fields, Dictionary<string, object> UpdateHash)
-        { }
-
-        public void UpdateEMSUserById(string Id, Dictionary<string, object> Fields, Dictionary<string, object> UpdateHash)
-        { }
-
-        private void UpdateEMSUser(Dictionary<string, object> UpdateHash)
+        public void RemoveManagerFromUsers(string managerEmailId)
         {
-            // TODO
+            var update = Builders<EMSUser>.Update.Unset(EMSUser => EMSUser.ManagerEmailId).CurrentDate(EMSUser => EMSUser.UpdatedAt);
+            EMSUserCollection.UpdateMany(EMSUser => EMSUser.ManagerEmailId == managerEmailId, update);
         }
 
         public void RemoveEMSUserByEmail(string EmailId)
