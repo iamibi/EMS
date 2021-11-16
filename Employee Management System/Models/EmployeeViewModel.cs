@@ -10,10 +10,6 @@ namespace Employee_Management_System.Models
         public string TaskStatus { get; set; }
 
         [Required]
-        [Display(Name = "Task Description")]
-        public string TaskDescription { get; set; }
-
-        [Required]
         [Display(Name = "Task Id")]
         public string TaskId { get; set; }
     }

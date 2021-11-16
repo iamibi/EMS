@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var userTask in ViewBag.usersTasks)
+        @foreach (var userTask in ViewBag.usersTasks)
         {
             <tr>
                 <td>@userTask.Key</td>
@@ -22,6 +22,9 @@
 <div class="row">
     @Html.ActionLink("Add new user", "AddUserToManager", "EMS")
 </div>
+<br />
+<br />
+@Html.ActionLink("Log out", "Logout", "EMS")
 
 <style type="text/css">
     td {

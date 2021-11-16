@@ -9,7 +9,7 @@
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(m => m.TaskId)</th>
-            <th>@Html.DisplayNameFor(m => m.TaskDescription)</th>
+            <th><label for="task_description">Task Description</th>
             <th>@Html.DisplayNameFor(m => m.TaskStatus)</th>
         </tr>
     </thead>
@@ -35,7 +35,7 @@
                 }
 
                 <td>@Html.DropDownListFor(em => task.Status, listItems)</td>
-                @using (Html.BeginForm("EmployeeView", "EMS", FormMethod.Post))
+                @using (Html.BeginForm("EmployeeView", "EMS", new { taskId = task.TaskId, taskStatus = task.Status }, FormMethod.Post))
                 {
                     <td><input type="submit" value="Add" class="btn btn-primary" /></td>
                 }

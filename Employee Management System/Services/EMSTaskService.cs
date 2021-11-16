@@ -51,8 +51,8 @@ namespace Employee_Management_System.Services
 
         public void UpdateTaskById(string taskId, string taskStatus)
         {
-            UpdateDefinition<EMSTask> updateDefinition = $"{{ $set: {{ uat: {DateTime.UtcNow}, st: {taskStatus} }} }}";
-            EMSTaskCollection.UpdateOne(EMSTask => EMSTask.TaskId == taskId, updateDefinition);
+            var update = Builders<EMSTask>.Update.Set(EMSTask => EMSTask.Status, taskStatus).CurrentDate(EMSTask => EMSTask.UpdatedAt);
+            EMSTaskCollection.UpdateOne(EMSTask => EMSTask.TaskId == taskId, update);
         }
 
         public void RemoveTaskById(string TaskId)

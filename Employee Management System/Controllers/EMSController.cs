@@ -110,7 +110,7 @@ namespace Employee_Management_System.Controllers
                 if (PlatformHelper.UpdateTaskStatusOfUser(emailId, employeeVM))
                 {
                     ViewBag.EmployeeTask = PlatformHelper.GetAllTasksForUser(emailId);
-                    return View();
+                    return EmployeeView();
                 }
             }
 
