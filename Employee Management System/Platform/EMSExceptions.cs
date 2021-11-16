@@ -77,4 +77,69 @@ namespace Employee_Management_System.Platform
 
         public TaskCreationFailed(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
     }
+
+    [Serializable]
+    public class InvalidEmail : BaseException
+    {
+        private const string _classMessage = "Invalid Email Passed.";
+        private const string _className = "InvalidEmail";
+
+        public InvalidEmail() : base(_classMessage, _className) { }
+
+        public InvalidEmail(string customMessage) : base($"{_classMessage}\n{customMessage}", _className) { }
+
+        public InvalidEmail(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
+    }
+
+    [Serializable]
+    public class InsufficientPrivileges : BaseException
+    {
+        private const string _classMessage = "The user doesn't have sufficient privileges to perform the operation.";
+        private const string _className = "InsufficientPrivileges";
+
+        public InsufficientPrivileges() : base(_classMessage, _className) { }
+
+        public InsufficientPrivileges(string customMessage) : base($"{_classMessage}\n{customMessage}", _className) { }
+
+        public InsufficientPrivileges(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
+    }
+
+    [Serializable]
+    public class InvalidUserRole : BaseException
+    {
+        private const string _classMessage = "Invalid user role passed.";
+        private const string _className = "InvalidUserRole";
+
+        public InvalidUserRole() : base(_classMessage, _className) { }
+
+        public InvalidUserRole(string customMessage) : base($"{_classMessage}\n{customMessage}", _className) { }
+
+        public InvalidUserRole(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
+    }
+
+    [Serializable]
+    public class InvalidPhoneNumber : BaseException
+    {
+        private const string _classMessage = "Invalid phone number passed.";
+        private const string _className = "InvalidPhoneNumber";
+
+        public InvalidPhoneNumber() : base(_classMessage, _className) { }
+
+        public InvalidPhoneNumber(string customMessage) : base($"{_classMessage}\n{customMessage}", _className) { }
+
+        public InvalidPhoneNumber(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
+    }
+
+    [Serializable]
+    public class InternalError : BaseException
+    {
+        private const string _classMessage = "Something went wrong.";
+        private const string _className = "InternalError";
+
+        public InternalError() : base(_classMessage, _className) { }
+
+        public InternalError(string customMessage) : base($"{_classMessage}\n{customMessage}", _className) { }
+
+        public InternalError(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
+    }
 }

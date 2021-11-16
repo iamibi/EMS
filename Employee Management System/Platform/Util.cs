@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Security;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
-using Employee_Management_System.Constants;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 
@@ -10,11 +8,11 @@ namespace Employee_Management_System.Platform
 {
     public class Util
     {
-        public static bool IsEmailValid(string EmailId)
+        public static bool IsEmailValid(string emailId)
         {
             try
             {
-                _ = new MailAddress(EmailId);
+                _ = new MailAddress(emailId);
                 return true;
             }
             catch (FormatException)
@@ -25,50 +23,12 @@ namespace Employee_Management_System.Platform
 
         public static string ExceptionWithBacktrace(string message, Exception ex)
         {
-            return $"[ERROR] {message}\n{ex.Message}\nStacktrace: {(ex.InnerException != null ? ex.InnerException.StackTrace : ex.StackTrace)}";
+            return $"{message}\n{ex.Message}\nStacktrace: {(ex.InnerException != null ? ex.InnerException.StackTrace : ex.StackTrace)}";
         }
 
         public static bool IsPasswordSecure(string password)
         {
             return IsValidPassword(password, new PasswordOptions());
-            //PasswordScore PasswordSc = CheckStrength(password);
-            //switch (PasswordSc)
-            //{
-            //    case PasswordScore.Blank:
-            //    case PasswordScore.VeryWeak:
-            //    case PasswordScore.Weak:
-            //        return false;
-            //    case PasswordScore.Medium:
-            //    case PasswordScore.Strong:
-            //    case PasswordScore.VeryStrong:
-            //        // Password deemed strong enough
-            //        return true;
-            //}
-
-            //return false;
-        }
-
-        private static PasswordScore CheckStrength(string Password)
-        {
-            int Score = 0;
-
-            if (Password.Length < 1)
-                return PasswordScore.Blank;
-            if (Password.Length < 4)
-                return PasswordScore.VeryWeak;
-
-            if (Password.Length >= 8)
-                Score++;
-            if (Password.Length >= 12)
-                Score++;
-            if (Regex.Match(Password, @"/\d+/", RegexOptions.ECMAScript).Success)
-                Score++;
-            if (Regex.Match(Password, @"/[a-z]/", RegexOptions.ECMAScript).Success && Regex.Match(Password, @"/[A-Z]/", RegexOptions.ECMAScript).Success)
-                Score++;
-            if (Regex.Match(Password, @"/.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]/").Success)
-                Score++;
-
-            return (PasswordScore)Score;
         }
 
         public enum PasswordStrength

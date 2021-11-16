@@ -1,15 +1,9 @@
-using Employee_Management_System.Services;
+using Employee_Management_System.Platform;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Employee_Management_System
 {
@@ -29,6 +23,7 @@ namespace Employee_Management_System
             services.AddRazorPages();
             services.AddSession();
             services.AddHttpContextAccessor();
+            services.AddSingleton<ILoggerManager, LoggerManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

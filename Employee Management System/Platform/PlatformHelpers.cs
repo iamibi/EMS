@@ -2,13 +2,24 @@
 using Employee_Management_System.Models;
 using System.Collections.Generic;
 using Employee_Management_System.Constants;
+using Ganss.XSS;
 
 namespace Employee_Management_System.Platform
 {
     public class PlatformHelpers
     {
+        private static readonly ILoggerManager logger = new LoggerManager();
+        private static readonly HtmlSanitizer htmlSanitizer = new HtmlSanitizer();
+
+        private static string GetDbErrorString(Exception ex)
+        {
+            return Util.ExceptionWithBacktrace("Error occrred while fetching from DB.", ex);
+        }
+
         public bool ValidateEMSUserCredentials(string emailId, string password)
         {
+            logger.LogInformation($"Validating user credentials for {htmlSanitizer.Sanitize(emailId)}");
+
             if (emailId == null || password == null || emailId == "" || password == "" || !Util.IsEmailValid(emailId)) return false;
 
             // TODO: Check the log file for failed attempts by that user.
@@ -25,7 +36,8 @@ namespace Employee_Management_System.Platform
 
         public bool ValidateUser(string emailId)
         {
-            if (emailId == null || emailId.Trim() == string.Empty || !Util.IsEmailValid(emailId)) return false;
+            if (string.IsNullOrWhiteSpace(emailId) || !Util.IsEmailValid(emailId)) return false;
+            emailId = htmlSanitizer.Sanitize(emailId);
             EMSUser user = GetUser(emailId);
             if (user == null) return false;
             return true;
@@ -33,18 +45,22 @@ namespace Employee_Management_System.Platform
 
         public EMSUser GetUser(string emailId)
         {
+            if (!Util.IsEmailValid(emailId)) throw new InvalidEmail();
+
             try
             {
                 return PlatformServices.UserService.GetEMSUserByEmail(emailId);
             }
             catch (Exception ex)
             {
+                logger.LogError(GetDbErrorString(ex));
                 throw new DbFetchFailed("", ex);
             }
         }
 
         public bool IsAdmin(string emailId)
         {
+            emailId = htmlSanitizer.Sanitize(emailId);
             if (!Util.IsEmailValid(emailId)) return false;
 
             EMSUser user;
@@ -54,7 +70,7 @@ namespace Employee_Management_System.Platform
             }
             catch(Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+                logger.LogError(GetDbErrorString(ex));
                 throw new DbFetchFailed();
             }
 
@@ -66,16 +82,17 @@ namespace Employee_Management_System.Platform
 
         public List<EMSUser> GetAllUsers(string adminEmailId)
         {
+            adminEmailId = htmlSanitizer.Sanitize(adminEmailId);
             if (!Util.IsEmailValid(adminEmailId))
-                throw new InvalidOperationException();
+                throw new InsufficientPrivileges();
 
             try
             {
                 return PlatformServices.UserService.GetAllEMSUsers(adminEmailId);
             }
-            catch
+            catch (Exception ex)
             {
-                // Log here
+                logger.LogError(GetDbErrorString(ex));
                 throw new DbFetchFailed();
             }
         }
@@ -83,7 +100,7 @@ namespace Employee_Management_System.Platform
         public List<EMSTask> GetAllTasksForUser(string emailId)
         {
             if (!Util.IsEmailValid(emailId))
-                throw new InvalidOperationException();
+                throw new InvalidEmail();
 
             try
             {
@@ -92,18 +109,17 @@ namespace Employee_Management_System.Platform
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
-                // Log here
+                logger.LogError(GetDbErrorString(ex));
                 throw new DbFetchFailed();
             }
         }
 
         public List<EMSUser> GetAvailableUsers(string managerEmailId)
         {
-            if (!Util.IsEmailValid(managerEmailId)) throw new InvalidOperationException();
+            if (!Util.IsEmailValid(managerEmailId)) throw new InvalidEmail();
 
             EMSUser user = PlatformServices.UserService.GetEMSUserByEmail(managerEmailId);
-            if (user.Role != EMSUserRoles.Manager.ToString()) throw new Exception("Invalid access");
+            if (user.Role != EMSUserRoles.Manager.ToString()) throw new InsufficientPrivileges();
 
             try
             {
@@ -111,8 +127,7 @@ namespace Employee_Management_System.Platform
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
-                // Log here
+                logger.LogError(GetDbErrorString(ex));
                 throw new DbFetchFailed();
             }
         }
@@ -128,7 +143,7 @@ namespace Employee_Management_System.Platform
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+                logger.LogError(GetDbErrorString(ex));
                 throw new DbFetchFailed(ex.Message, ex);
             }
         }
@@ -143,7 +158,7 @@ namespace Employee_Management_System.Platform
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+                logger.LogError(GetDbErrorString(ex));
                 throw new DbFetchFailed("Error occurred while performing action on database.");
             }
 
@@ -153,20 +168,31 @@ namespace Employee_Management_System.Platform
         public Dictionary<string, long> GetCompletedTaskCount(string managerEmailId)
         {
             Dictionary<string, long> taskCounts = new Dictionary<string, long>();
+            List<EMSUser> EMSUsersList;
 
             try
             {
-                List<EMSUser> EMSUsersList = PlatformServices.UserService.GetEMSUsersByManager(managerEmailId);
+                EMSUsersList = PlatformServices.UserService.GetEMSUsersByManager(managerEmailId);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(GetDbErrorString(ex));
+                throw new DbFetchFailed();
+            }
 
-                foreach(EMSUser Iter in EMSUsersList)
+            if (EMSUsersList == null) throw new DbFetchFailed();
+
+            try
+            {
+                foreach (EMSUser Iter in EMSUsersList)
                     taskCounts[Iter.EmailId] = PlatformServices.TaskService.GetTaskCountForEMSUser(Iter.EmployeeId);
 
                 return taskCounts;
             }
-            catch
+            catch (Exception ex)
             {
-                // Log here
-                throw new Exception();
+                logger.LogError(Util.ExceptionWithBacktrace("Something went wrong while getting the task count.", ex));
+                throw new InvalidOperationException();
             }
         }
 
@@ -243,7 +269,7 @@ namespace Employee_Management_System.Platform
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
+                logger.LogError(Util.ExceptionWithBacktrace("Error occrred while creating the task.", ex));
 
                 // Remove the user from the database as task creation failed.
                 // This makes sure that we don't have inconsistent data in the database.
@@ -263,11 +289,13 @@ namespace Employee_Management_System.Platform
 
             for (int i = 0; i < taskCount; i++)
             {
-                EMSTask task = new EMSTask();
-                task.EmployeeId = storedUser.EmployeeId.ToString();
-                task.Status = EMSTaskStatus.Open.ToString();
-                task.TaskDescription = $"Task number: {i}";
-                task.UpdatedAt = currentTime;
+                EMSTask task = new EMSTask
+                {
+                    EmployeeId = storedUser.EmployeeId.ToString(),
+                    Status = EMSTaskStatus.Open.ToString(),
+                    TaskDescription = $"Task number: {i}",
+                    UpdatedAt = currentTime
+                };
 
                 try
                 {
@@ -276,7 +304,7 @@ namespace Employee_Management_System.Platform
                 }
                 catch (Exception ex)
                 {
-                    throw new DbFetchFailed(ex.Message);
+                    throw new TaskCreationFailed(ex.Message, ex);
                 }
             }
 
@@ -285,36 +313,49 @@ namespace Employee_Management_System.Platform
 
         private EMSUser CreateUser(RegisterViewModel userParams)
         {
-            EMSUser newUser = new EMSUser();
+            EMSUser newUser = new();
             DateTime currentTime = DateTime.UtcNow;
 
-            newUser.FirstName = userParams.FirstName;
-            newUser.LastName = userParams.LastName;
+            newUser.FirstName = htmlSanitizer.Sanitize(userParams.FirstName);
+            newUser.LastName = htmlSanitizer.Sanitize(userParams.LastName);
             newUser.CreatedAt = currentTime;
             newUser.UpdatedAt = currentTime;
-            newUser.PhoneNumber = userParams.PhoneNumber;
+
+            // Validate the phone number.
+            string phoneNumber = htmlSanitizer.Sanitize(userParams.PhoneNumber);
+            if (!phoneNumber.ValidatePhoneNumber(true)) throw new InvalidPhoneNumber();
+            newUser.PhoneNumber = phoneNumber;
 
             // Check whether the email id is valid or not.
             string emailId = userParams.Email.Trim();
-            if (!Util.IsEmailValid(emailId))
-                throw new Exception("Invalid Email Id Passed.");
+            if (!Util.IsEmailValid(emailId)) throw new InvalidEmail();
             newUser.EmailId = emailId;
 
             // Verify that the role is present in the ENUM.
+            // [TODO] In future, this will be a dynamic field that will take input.
             string role = EMSUserRoles.Employee.ToString();
             if (!Enum.IsDefined(typeof(EMSUserRoles), role))
-                throw new Exception("Invalid Role Passed");
+                throw new InvalidUserRole();
             newUser.Role = role;
 
             // Check the password string.
-            if (!Util.IsPasswordSecure(userParams.Password.Trim()))
-                throw new PasswordNotStrongEnough();
-            PasswordHasherUtil PwHash = new PasswordHasherUtil(userParams.Password);
+            if (!Util.IsPasswordSecure(userParams.Password.Trim())) throw new PasswordNotStrongEnough();
+
+            PasswordHasherUtil pwHash;
+            try
+            {
+                pwHash = new PasswordHasherUtil(userParams.Password);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(Util.ExceptionWithBacktrace("Error occurred while generating password hash.", ex));
+                throw new InternalError();
+            }
             userParams.Password = string.Empty;
 
             // Store the password digest.
-            newUser.PasswordHash = PwHash.Digest;
-            newUser.Salt = PwHash.Salt;
+            newUser.PasswordHash = pwHash.Digest;
+            newUser.Salt = pwHash.Salt;
 
             return PlatformServices.UserService.CreateEMSUser(newUser);
         }

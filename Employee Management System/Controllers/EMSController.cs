@@ -3,19 +3,24 @@ using Employee_Management_System.Models;
 using Employee_Management_System.Platform;
 using Employee_Management_System.Constants;
 using Microsoft.AspNetCore.Http;
+using Ganss.XSS;
 
 namespace Employee_Management_System.Controllers
 {
     public class EMSController : Controller
     {
         private readonly PlatformHelpers PlatformHelper = new PlatformHelpers();
+        private static readonly HtmlSanitizer htmlSanitizer = new HtmlSanitizer();
 
         public IActionResult Index()
         {
             string emailId = HttpContext.Session.GetString("username");
+            if (string.IsNullOrWhiteSpace(emailId)) return View();
+            
+            emailId = htmlSanitizer.Sanitize(emailId);
             ViewBag.username = emailId;
             EMSUser user = PlatformHelper.GetUser(emailId);
-            if (user == null && emailId == null) return View();
+            if (user == null) return View();
             else if (user.Role == EMSUserRoles.Employee.ToString()) return EmployeeView();
             else if (user.Role == EMSUserRoles.Manager.ToString()) return ManagerView();
             else if (user.Role == EMSUserRoles.IT_Department.ToString()) return ITDepartmentView();
@@ -37,7 +42,7 @@ namespace Employee_Management_System.Controllers
                 {
                     if (PlatformHelper.RegisterNewUser(registerModel))
                     {
-                        HttpContext.Session.SetString("first_name", registerModel.FirstName);
+                        HttpContext.Session.SetString("first_name", htmlSanitizer.Sanitize(registerModel.FirstName));
                         return View("RegisterSuccessful");
                     }
                 }
