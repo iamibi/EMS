@@ -3,6 +3,8 @@ using Employee_Management_System.Models;
 using System.Collections.Generic;
 using Employee_Management_System.Constants;
 using Ganss.XSS;
+using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Employee_Management_System.Platform
 {
@@ -20,18 +22,49 @@ namespace Employee_Management_System.Platform
         {
             logger.LogInformation($"Validating user credentials for {htmlSanitizer.Sanitize(emailId)}");
 
-            if (emailId == null || password == null || emailId == "" || password == "" || !Util.IsEmailValid(emailId)) return false;
+            if (string.IsNullOrWhiteSpace(emailId) || string.IsNullOrWhiteSpace(password) || !Util.IsEmailValid(emailId)) return false;
 
             // TODO: Check the log file for failed attempts by that user.
+            if (ReachedLoginAttemps(htmlSanitizer.Sanitize(emailId))) return false;
 
             EMSUser user = PlatformServices.UserService.GetEMSUserByEmail(emailId);
             if (user == null) return false;
 
             // Check the password hash.
             PasswordHasherUtil PwHash = new PasswordHasherUtil(password, user.Salt);
-            if (PwHash.Digest != user.PasswordHash) return false;
+            if (PwHash.Digest != user.PasswordHash)
+            {
+                logger.LogWarning($"User {htmlSanitizer.Sanitize(emailId)} failed");
+                return false;
+            }
 
             return true;
+        }
+
+        // Check the incorrect login attempts in the span of 24 hours.
+        private bool ReachedLoginAttemps(string emailId)
+        {
+            DateTime today = DateTime.UtcNow;
+            string pattern = $"User {emailId} failed";
+            string logEntryDate = $"{today.Year}-{today.Month}-{today.Day}.txt";
+
+            try
+            {
+                using (StreamReader file = new StreamReader($"Logs\\{logEntryDate}"))
+                {
+                    string fileContents = file.ReadToEnd();
+                    Regex rx = new(pattern);
+                    if (rx.Matches(fileContents).Count < 3) return false;
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(Util.ExceptionWithBacktrace(ex.Message, ex));
+                return true;
+            }
+
+            return false;
         }
 
         public bool ValidateUser(string emailId)

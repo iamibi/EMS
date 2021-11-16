@@ -1,6 +1,59 @@
-2021-11-16 11:16:53,932 [4] INFO  App  
- Log System Initialized 
+2021-11-16 16:52:22 INFO  Log System Initialized 
  
-2021-11-16 11:16:54,226 [4] INFO  App  
- Validating user credentials for mike@abc.com 
+2021-11-16 16:52:22 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-16 16:52:23 ERROR Could not find file 'D:\.NET\EMS\Employee Management System\Logs\2021-11-2021'.
+Could not find file 'D:\.NET\EMS\Employee Management System\Logs\2021-11-2021'.
+Stacktrace:    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path)
+   at Employee_Management_System.Platform.PlatformHelpers.ReachedLoginAttemps(String emailId) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 53 
+ 
+2021-11-16 16:52:31 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-16 16:52:31 ERROR Could not find file 'D:\.NET\EMS\Employee Management System\Logs\2021-11-2021'.
+Could not find file 'D:\.NET\EMS\Employee Management System\Logs\2021-11-2021'.
+Stacktrace:    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path)
+   at Employee_Management_System.Platform.PlatformHelpers.ReachedLoginAttemps(String emailId) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 53 
+ 
+2021-11-16 16:52:53 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-16 16:52:53 ERROR Could not find file 'D:\.NET\EMS\Employee Management System\Logs\2021-11-2021'.
+Could not find file 'D:\.NET\EMS\Employee Management System\Logs\2021-11-2021'.
+Stacktrace:    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path)
+   at Employee_Management_System.Platform.PlatformHelpers.ReachedLoginAttemps(String emailId) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 53 
+ 
+2021-11-16 16:53:06 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-16 16:54:42 INFO  Log System Initialized 
+ 
+2021-11-16 16:54:42 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-16 16:55:50 INFO  Log System Initialized 
+ 
+2021-11-16 16:55:50 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-16 16:56:42 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-16 16:56:42 WARN  User mike@abc.com failed 
+ 
+2021-11-16 16:57:03 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-16 16:57:03 WARN  User mike@abc.com failed 
+ 
+2021-11-16 16:57:24 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-16 16:57:27 WARN  User mike@abc.com failed 
+ 
+2021-11-16 16:57:45 INFO  Validating user credentials for mike@abc.com 
  
