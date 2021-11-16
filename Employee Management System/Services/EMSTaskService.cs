@@ -26,11 +26,6 @@ namespace Employee_Management_System.Services
             }
         }
 
-        public EMSTask GetEMSTaskById(string TaskId)
-        {
-            return EMSTaskCollection.Find(EMSTask => EMSTask.TaskId == TaskId).FirstOrDefault();
-        }
-
         public List<EMSTask> GetEMSTasksForEMSUser(string EmployeeId)
         {
             return EMSTaskCollection.Find(EMSTask => EMSTask.EmployeeId == EmployeeId).ToList();

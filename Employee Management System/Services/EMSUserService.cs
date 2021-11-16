@@ -48,11 +48,6 @@ namespace Employee_Management_System.Services
             return EMSUserCollection.Find(EMSUser => EMSUser.EmailId != emailId).ToList();
         }
 
-        public long GetEMSUsersCount()
-        {
-            return EMSUserCollection.CountDocuments(EMSUser => true);
-        }
-
         public List<EMSUser> GetAvailableUsers(string managerEmailId)
         {
             return EMSUserCollection.Find(
