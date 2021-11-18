@@ -53,6 +53,19 @@ namespace Employee_Management_System.Platform
     }
 
     [Serializable]
+    public class DbStoreFailed : BaseException
+    {
+        private const string _classMessage = "Database store operation failed.";
+        private const string _className = "DbStoreFailed";
+
+        public DbStoreFailed() : base(_classMessage, _className) { }
+
+        public DbStoreFailed(string customMessage) : base($"{_classMessage}\n{customMessage}", _className) { }
+
+        public DbStoreFailed(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
+    }
+
+    [Serializable]
     public class UserCreationFailed : BaseException
     {
         private const string _classMessage = "Failed to create the user.";
@@ -141,5 +154,31 @@ namespace Employee_Management_System.Platform
         public InternalError(string customMessage) : base($"{_classMessage}\n{customMessage}", _className) { }
 
         public InternalError(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
+    }
+
+    [Serializable]
+    public class RemoveUserFailed : BaseException
+    {
+        private const string _classMessage = "Unabled to remove the user.";
+        private const string _className = "RemoveUserFailed";
+
+        public RemoveUserFailed() : base(_classMessage, _className) { }
+
+        public RemoveUserFailed(string customMessage) : base($"{_classMessage}\n{customMessage}", _className) { }
+
+        public RemoveUserFailed(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
+    }
+
+    [Serializable]
+    public class ValidationFailed : BaseException
+    {
+        private const string _classMessage = "Unabled to validate the user.";
+        private const string _className = "ValidationFailed";
+
+        public ValidationFailed() : base(_classMessage, _className) { }
+
+        public ValidationFailed(string customMessage) : base($"{_classMessage}\n{customMessage}", _className) { }
+
+        public ValidationFailed(string customMessage, Exception innerException) : base($"{_classMessage}\n{customMessage}", _className, innerException) { }
     }
 }

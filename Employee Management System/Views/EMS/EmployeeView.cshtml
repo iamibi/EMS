@@ -17,32 +17,33 @@
 
         @foreach (EMSTask task in ViewBag.EmployeeTasks)
         {
-            <tr>
-                <td>@Html.DisplayFor(em => task.TaskId)</td>
-                <td>@Html.DisplayFor(em => task.TaskDescription)</td>
-                @{
-                    List<SelectListItem> listItems = new List<SelectListItem>();
-                    foreach (EMSTaskStatus status in Enum.GetValues(typeof(EMSTaskStatus)))
-                    {
-                        SelectListItem listItem = new SelectListItem()
+            @using (Html.BeginForm("EmployeeView", "EMS", FormMethod.Post))
+            {
+                <tr>
+                    <td><label id="@task.TaskId">@task.TaskId</label></td>
+                    <td>@Html.DisplayFor(em => task.TaskDescription)</td>
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        foreach (EMSTaskStatus status in Enum.GetValues(typeof(EMSTaskStatus)))
                         {
-                            Text = status.ToString(),
-                            Value = status.ToString(),
-                            Selected = (status.ToString().Equals(task.Status) ? true : false)
-                        };
-                        listItems.Add(listItem);
+                            SelectListItem listItem = new SelectListItem()
+                            {
+                                Text = status.ToString(),
+                                Value = $"{status.ToString()}_{task.TaskId}",
+                                Selected = (status.ToString() == task.Status ? true : false)
+                            };
+                            listItems.Add(listItem);
+                        }
                     }
-                }
 
-                <td>@Html.DropDownListFor(em => task.Status, listItems)</td>
-                @using (Html.BeginForm("EmployeeView", "EMS", new { taskId = task.TaskId, taskStatus = task.Status }, FormMethod.Post))
-                {
-                    <td><input type="submit" value="Add" class="btn btn-primary" /></td>
-                }
-            </tr>
-        }
+                    <td>@Html.DropDownListFor(em => task.Status, listItems)</td>
 
-    </tbody>
+                    <td><input type="submit" value="Add" class="btn btn-primary" /></td>   
+                </tr>
+                }
+            }
+
+        </tbody>
 </table>
 <br />
 <br />

@@ -24,7 +24,7 @@ namespace Employee_Management_System.Platform
 
             if (string.IsNullOrWhiteSpace(emailId) || string.IsNullOrWhiteSpace(password) || !Util.IsEmailValid(emailId)) return false;
 
-            // TODO: Check the log file for failed attempts by that user.
+            // Check the log file for failed attempts by that user.
             if (ReachedLoginAttemps(htmlSanitizer.Sanitize(emailId))) return false;
 
             EMSUser user = PlatformServices.UserService.GetEMSUserByEmail(emailId);
@@ -38,33 +38,8 @@ namespace Employee_Management_System.Platform
                 return false;
             }
 
+            logger.LogInformation($"Validation successful for user {htmlSanitizer.Sanitize(emailId)}.");
             return true;
-        }
-
-        // Check the incorrect login attempts in the span of 24 hours.
-        private bool ReachedLoginAttemps(string emailId)
-        {
-            DateTime today = DateTime.UtcNow;
-            string pattern = $"User {emailId} failed";
-            string logEntryDate = $"{today.Year}-{today.Month}-{today.Day}.txt";
-
-            try
-            {
-                using (StreamReader file = new StreamReader($"Logs\\{logEntryDate}"))
-                {
-                    string fileContents = file.ReadToEnd();
-                    Regex rx = new(pattern);
-                    if (rx.Matches(fileContents).Count < 3) return false;
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(Util.ExceptionWithBacktrace(ex.Message, ex));
-                return true;
-            }
-
-            return false;
         }
 
         public bool ValidateUser(string emailId)
@@ -185,6 +160,18 @@ namespace Employee_Management_System.Platform
         {
             if (!Util.IsEmailValid(emailId)) return false;
 
+            bool flag = false;
+            foreach(var status in Enum.GetValues(typeof(EMSTaskStatus)))
+            {
+                if (status.ToString() == employeeVM.TaskStatus.ToString())
+                {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag) return false;
+
             try
             {
                 PlatformServices.TaskService.UpdateTaskById(employeeVM.TaskId, employeeVM.TaskStatus.ToString());
@@ -200,6 +187,8 @@ namespace Employee_Management_System.Platform
 
         public Dictionary<string, long> GetCompletedTaskCount(string managerEmailId)
         {
+            if (!Util.IsEmailValid(managerEmailId)) throw new InvalidEmail();
+
             Dictionary<string, long> taskCounts = new Dictionary<string, long>();
             List<EMSUser> EMSUsersList;
 
@@ -218,14 +207,14 @@ namespace Employee_Management_System.Platform
             try
             {
                 foreach (EMSUser Iter in EMSUsersList)
-                    taskCounts[Iter.EmailId] = PlatformServices.TaskService.GetTaskCountForEMSUser(Iter.EmployeeId);
+                    taskCounts[Iter.EmailId] = PlatformServices.TaskService.GetCompletedTaskCountForEMSUser(Iter.EmployeeId);
 
                 return taskCounts;
             }
             catch (Exception ex)
             {
                 logger.LogError(Util.ExceptionWithBacktrace("Something went wrong while getting the task count.", ex));
-                throw new InvalidOperationException();
+                throw new DbFetchFailed();
             }
         }
 
@@ -241,16 +230,19 @@ namespace Employee_Management_System.Platform
                 {
                     List<EMSUser> usersWithManager = PlatformServices.UserService.GetEMSUsersByManager(emailId, true);
                     PlatformServices.UserService.RemoveManagerFromUsers(emailId);
+                    logger.LogInformation($"User {htmlSanitizer.Sanitize(emailId)} removed by {htmlSanitizer.Sanitize(adminEmailId)}");
                     return;
                 }
                 List<EMSTask> EmployeeTasks = PlatformServices.TaskService.GetEMSTasksForEMSUser(user.EmployeeId);
                 PlatformServices.UserService.RemoveEMSUserById(user.EmployeeId);
                 PlatformServices.TaskService.RemoveAllTask(EmployeeTasks);
             }
-            catch
+            catch (Exception ex)
             {
-                // Log here
-                throw new DbFetchFailed();
+                logger.LogError(
+                    Util.ExceptionWithBacktrace($"Error occurred while trying to remove the user {htmlSanitizer.Sanitize(emailId)} by admin {htmlSanitizer.Sanitize(adminEmailId)}", ex)
+                );
+                throw new RemoveUserFailed();
             }
         }
 
@@ -258,12 +250,13 @@ namespace Employee_Management_System.Platform
         {
             
             // Validate the user's email and verify that the user doesn't already exist on the platform.
-            if (registerUser.Email == null || registerUser.Email.Trim() == "") return false;
+            if (string.IsNullOrWhiteSpace(registerUser.Email)) return false;
+            string emailId = htmlSanitizer.Sanitize(registerUser.Email.Trim());
             EMSUser user;
 
             try
             {
-                user = PlatformServices.UserService.GetEMSUserByEmail(registerUser.Email.Trim());
+                user = PlatformServices.UserService.GetEMSUserByEmail(emailId);
             }
             catch (Exception ex)
             {
@@ -278,19 +271,29 @@ namespace Employee_Management_System.Platform
             {
                 storedUser = CreateUser(registerUser);
             }
-            catch (PasswordNotStrongEnough pw)
+            catch (PasswordNotStrongEnough)
             {
-                throw new UserCreationFailed("Please improve the password strength.");
+                logger.LogWarning($"Password is not strong enough for user {emailId}");
+                throw new ValidationFailed("Please improve the password strength.");
+            }
+            catch (InvalidPhoneNumber)
+            {
+                logger.LogWarning($"Invalid phone number enterd by {emailId} while registering.");
+                throw new ValidationFailed();
+            }
+            catch (InvalidUserRole)
+            {
+                logger.LogWarning($"Invalid User role for user {emailId}");
+                throw new ValidationFailed();
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(Util.ExceptionWithBacktrace("", ex));
-                // Log Here
+                logger.LogError(Util.ExceptionWithBacktrace($"Error occurred while creating a user with email {emailId}", ex));
                 throw new UserCreationFailed("Unable to create a new user.");
             }
 
             if (storedUser == null)
-                throw new DbFetchFailed("Unable to fetch the user.");
+                throw new DbStoreFailed();
 
             // Return early if the role is not employee.
             if (storedUser.Role != EMSUserRoles.Employee.ToString()) return true;
@@ -337,6 +340,7 @@ namespace Employee_Management_System.Platform
                 }
                 catch (Exception ex)
                 {
+                    logger.LogError(Util.ExceptionWithBacktrace("Error occurred while creating a task.", ex));
                     throw new TaskCreationFailed(ex.Message, ex);
                 }
             }
@@ -349,8 +353,15 @@ namespace Employee_Management_System.Platform
             EMSUser newUser = new();
             DateTime currentTime = DateTime.UtcNow;
 
-            newUser.FirstName = htmlSanitizer.Sanitize(userParams.FirstName);
-            newUser.LastName = htmlSanitizer.Sanitize(userParams.LastName);
+            string firstName = htmlSanitizer.Sanitize(userParams.FirstName);
+            if (string.IsNullOrWhiteSpace(firstName) || !Util.IsNameValid(firstName)) throw new ValidationFailed();
+            newUser.FirstName = firstName.Trim();
+
+            string lastName = htmlSanitizer.Sanitize(userParams.LastName);
+            if (string.IsNullOrWhiteSpace(lastName) || !Util.IsNameValid(lastName)) throw new ValidationFailed();
+            newUser.LastName = lastName;
+
+            // Set the created and updated at date time to current date time.
             newUser.CreatedAt = currentTime;
             newUser.UpdatedAt = currentTime;
 
@@ -391,6 +402,33 @@ namespace Employee_Management_System.Platform
             newUser.Salt = pwHash.Salt;
 
             return PlatformServices.UserService.CreateEMSUser(newUser);
+        }
+
+        // Check the incorrect login attempts in the span of 24 hours.
+        private bool ReachedLoginAttemps(string emailId)
+        {
+            // Check the file based on local time instead of UTC
+            DateTime today = DateTime.Now;
+            string pattern = $"User {emailId} failed";
+            string logEntryDate = $"{today.Year}-{today.Month}-{today.Day}.txt";
+
+            try
+            {
+                using (StreamReader file = new StreamReader($"Logs\\{logEntryDate}"))
+                {
+                    string fileContents = file.ReadToEnd();
+                    Regex rx = new(pattern);
+                    if (rx.Matches(fileContents).Count < 3) return false;
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(Util.ExceptionWithBacktrace(ex.Message, ex));
+                return true;
+            }
+
+            return false;
         }
     }
 }

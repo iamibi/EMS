@@ -50,30 +50,47 @@ namespace Employee_Management_System.Services
 
         public List<EMSUser> GetAvailableUsers(string managerEmailId)
         {
+            // The query is:
+            // 1. Manager email value in the user model should not be null
+            // 2. Should not be own id
+            // 3. Role should be of employee
             return EMSUserCollection.Find(
                 EMSUser => EMSUser.ManagerEmailId == null && EMSUser.EmailId != managerEmailId && EMSUser.Role == EMSUserRoles.Employee.ToString()
             ).ToList();
         }
 
-        public List<EMSUser> GetEMSUsersByManager(string ManagerEmailId, bool onlyEmails = false)
+        public List<EMSUser> GetEMSUsersByManager(string managerEmailId, bool onlyEmails = false)
         {
             if (onlyEmails)
             {
-                var fields = Builders<EMSUser>.Projection.Include(p => p.EmailId);
-                return EMSUserCollection.Find(EMSUser => EMSUser.ManagerEmailId == ManagerEmailId).Project<EMSUser>(fields).ToList();
+                var fields = Builders<EMSUser>
+                    .Projection
+                    .Include(p => p.EmailId);
+                return EMSUserCollection.Find(EMSUser => EMSUser.ManagerEmailId == managerEmailId).Project<EMSUser>(fields).ToList();
             }
-            return EMSUserCollection.Find(EMSUser => EMSUser.ManagerEmailId == ManagerEmailId).ToList();
+            return EMSUserCollection.Find(EMSUser => EMSUser.ManagerEmailId == managerEmailId).ToList();
         }
 
         public void AddUserForManager(string managerEmailId, string employeeEmailId)
         {
-            var update = Builders<EMSUser>.Update.Set(EMSUser => EMSUser.ManagerEmailId, managerEmailId).CurrentDate(EMSUser => EMSUser.UpdatedAt);
+            // The "Builders" class is used to generte an update dictionary
+            // that will be used by the mongo to reference a document's
+            // keys and apply the requested operation. In our case, operation
+            // is Set the manager email id for the requested user and 
+            // update the timestamp of updatedAt.
+            var update = Builders<EMSUser>
+                .Update
+                .Set(EMSUser => EMSUser.ManagerEmailId, managerEmailId)
+                .CurrentDate(EMSUser => EMSUser.UpdatedAt);
             EMSUserCollection.UpdateOne(EMSUser => EMSUser.EmailId == employeeEmailId, update);
         }
 
         public void RemoveManagerFromUsers(string managerEmailId)
         {
-            var update = Builders<EMSUser>.Update.Unset(EMSUser => EMSUser.ManagerEmailId).CurrentDate(EMSUser => EMSUser.UpdatedAt);
+            var update = Builders<EMSUser>
+                .Update
+                .Unset(EMSUser => EMSUser.ManagerEmailId)
+                .CurrentDate(EMSUser => EMSUser.UpdatedAt);
             EMSUserCollection.UpdateMany(EMSUser => EMSUser.ManagerEmailId == managerEmailId, update);
         }
 

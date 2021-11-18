@@ -4,6 +4,7 @@ using Employee_Management_System.Platform;
 using Employee_Management_System.Constants;
 using Microsoft.AspNetCore.Http;
 using Ganss.XSS;
+using System.Linq;
 
 namespace Employee_Management_System.Controllers
 {
@@ -11,6 +12,7 @@ namespace Employee_Management_System.Controllers
     {
         private readonly PlatformHelpers PlatformHelper = new PlatformHelpers();
         private static readonly HtmlSanitizer htmlSanitizer = new HtmlSanitizer();
+        private static readonly ILoggerManager logger = new LoggerManager();
 
         public IActionResult Index()
         {
@@ -104,14 +106,23 @@ namespace Employee_Management_System.Controllers
         }
 
         [HttpPost]
-        public ActionResult EmployeeView(EmployeeViewModel employeeVM)
+        public ActionResult EmployeeView(IFormCollection form)
         {
             if (ModelState.IsValid)
             {
                 string emailId = HttpContext.Session.GetString("username").Trim();
                 if (emailId == string.Empty) return View("Error/Failure");
 
-                // Verify the task update.
+                string taskString = form["task.Status"];
+                if (string.IsNullOrWhiteSpace(taskString)) return View("Error/Failure");
+
+                string taskStatus = taskString.Split('_').First();
+                string taskId = taskString.Split('_').Last();
+                EmployeeViewModel employeeVM = new EmployeeViewModel()
+                {
+                    TaskId = taskId,
+                    TaskStatus = taskStatus
+                };
                 if (PlatformHelper.UpdateTaskStatusOfUser(emailId, employeeVM))
                 {
                     ViewBag.EmployeeTask = PlatformHelper.GetAllTasksForUser(emailId);
@@ -198,11 +209,17 @@ namespace Employee_Management_System.Controllers
 
         public ActionResult Logout()
         {
-            foreach(var cookie in Request.Cookies.Keys)
+            string emailId = HttpContext.Session.GetString("username");
+            
+            if (string.IsNullOrWhiteSpace(emailId)) return Login();
+            logger.LogInformation($"User {htmlSanitizer.Sanitize(emailId)} logged out");
+
+            foreach (var cookie in Request.Cookies.Keys)
             {
                 Response.Cookies.Delete(cookie);
             }
             HttpContext.Session.Clear();
+            
             return RedirectToAction("Index");
         }
 

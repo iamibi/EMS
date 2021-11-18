@@ -1,0 +1,76 @@
+2021-11-18 13:25:19 INFO  Log System Initialized 
+ 
+2021-11-18 13:25:20 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 13:25:21 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 13:26:24 INFO  Log System Initialized 
+ 
+2021-11-18 13:26:24 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 13:26:26 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 13:32:24 INFO  Log System Initialized 
+ 
+2021-11-18 13:32:24 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 13:32:25 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 13:34:57 INFO  Log System Initialized 
+ 
+2021-11-18 13:34:57 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 13:34:58 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 13:36:46 INFO  Log System Initialized 
+ 
+2021-11-18 13:36:46 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 13:36:47 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 13:40:37 INFO  Log System Initialized 
+ 
+2021-11-18 13:40:38 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 13:40:38 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 13:45:07 INFO  Log System Initialized 
+ 
+2021-11-18 13:45:08 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 13:45:08 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 13:48:57 INFO  Log System Initialized 
+ 
+2021-11-18 13:48:57 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 13:48:58 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 13:50:54 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 13:50:54 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 13:57:25 INFO  Log System Initialized 
+ 
+2021-11-18 13:57:25 INFO  Validating user credentials for abcd@abc.com 
+ 
+2021-11-18 13:57:26 INFO  Validation successful for user abcd@abc.com. 
+ 
+2021-11-18 13:58:08 INFO  Validating user credentials for caster@abc.com 
+ 
+2021-11-18 13:58:08 INFO  Validation successful for user caster@abc.com. 
+ 
+2021-11-18 13:58:25 INFO  Validating user credentials for abcd@abc.com 
+ 
+2021-11-18 13:58:25 INFO  Validation successful for user abcd@abc.com. 
+ 
+2021-11-18 14:03:25 INFO  Log System Initialized 
+ 
+2021-11-18 14:03:26 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-18 14:03:26 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-18 14:03:31 INFO  Log System Initialized 
+ 
+2021-11-18 14:03:31 INFO  User mike@abc.com logged out 
+ 

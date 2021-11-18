@@ -4,12 +4,14 @@ using MongoDB.Driver;
 using Employee_Management_System.Constants;
 using System.Linq;
 using System;
+using Employee_Management_System.Platform;
 
 namespace Employee_Management_System.Services
 {
     public class EMSTaskService
     {
         private readonly IMongoCollection<EMSTask> EMSTaskCollection;
+        private static readonly ILoggerManager logger = new LoggerManager();
 
         public EMSTaskService()
         {
@@ -21,7 +23,7 @@ namespace Employee_Management_System.Services
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Error occurred while creating connection: " + ex.Message + "\nStacktrace:\n" + ex.StackTrace);
+                logger.LogError(Util.ExceptionWithBacktrace("Error occurred while trying to open a connection to the database.", ex));
                 throw new Exception("DB Connection Error in EMS Task Service.");
             }
         }
@@ -31,9 +33,9 @@ namespace Employee_Management_System.Services
             return EMSTaskCollection.Find(EMSTask => EMSTask.EmployeeId == EmployeeId).ToList();
         }
 
-        public long GetTaskCountForEMSUser(string EmployeeId)
+        public long GetCompletedTaskCountForEMSUser(string EmployeeId)
         {
-            long count = EMSTaskCollection.CountDocuments(EMSTask => EMSTask.EmployeeId == EmployeeId);
+            long count = EMSTaskCollection.CountDocuments(EMSTask => EMSTask.EmployeeId == EmployeeId && EMSTask.Status == EMSTaskStatus.Completed.ToString());
             return count;
         }
 
@@ -45,7 +47,10 @@ namespace Employee_Management_System.Services
 
         public void UpdateTaskById(string taskId, string taskStatus)
         {
-            var update = Builders<EMSTask>.Update.Set(EMSTask => EMSTask.Status, taskStatus).CurrentDate(EMSTask => EMSTask.UpdatedAt);
+            var update = Builders<EMSTask>
+                .Update
+                .Set(EMSTask => EMSTask.Status, taskStatus)
+                .CurrentDate(EMSTask => EMSTask.UpdatedAt);
             EMSTaskCollection.UpdateOne(EMSTask => EMSTask.TaskId == taskId, update);
         }
 
