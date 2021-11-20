@@ -9,6 +9,7 @@
 <div>
     @using (Html.BeginForm("Login", "EMS"))
     {
+        @Html.AntiForgeryToken()
         <div style="color:red;">@Html.ValidationSummary()</div>
         <div class="row">
             <!--Show details are saved successfully message-->

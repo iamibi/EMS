@@ -1,0 +1,449 @@
+2021-11-19 16:05:22 INFO  Log System Initialized 
+ 
+2021-11-19 16:05:23 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-19 16:05:23 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-19 16:05:26 INFO  Log System Initialized 
+ 
+2021-11-19 16:05:26 INFO  User mike@abc.com logged out 
+ 
+2021-11-19 16:13:53 INFO  Log System Initialized 
+ 
+2021-11-19 16:13:53 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-19 16:13:54 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-19 16:14:00 INFO  Log System Initialized 
+ 
+2021-11-19 16:14:00 INFO  User mike@abc.com logged out 
+ 
+2021-11-19 16:14:25 INFO  Validating user credentials for abcd@abc.com 
+ 
+2021-11-19 16:14:25 INFO  Validation successful for user abcd@abc.com. 
+ 
+2021-11-19 16:14:28 INFO  User abcd@abc.com logged out 
+ 
+2021-11-20 00:06:41 INFO  Log System Initialized 
+ 
+2021-11-20 00:06:42 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:06:42 ERROR Could not find a part of the path 'D:\.NET\EMS\Employee Management SystemTests\bin\Debug\.netcoreapp,version=v5.0\Logs\2021-11-19.txt'.
+Could not find a part of the path 'D:\.NET\EMS\Employee Management SystemTests\bin\Debug\.netcoreapp,version=v5.0\Logs\2021-11-19.txt'.
+Stacktrace:    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path)
+   at Employee_Management_System.Platform.PlatformHelpers.ReachedLoginAttemps(String emailId) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 418 
+ 
+2021-11-20 00:08:40 INFO  Log System Initialized 
+ 
+2021-11-20 00:08:40 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:08:40 ERROR Could not find a part of the path 'D:\.NET\EMS\Employee Management SystemTests\bin\Debug\.netcoreapp,version=v5.0\Logs\2021-11-19.txt'.
+Could not find a part of the path 'D:\.NET\EMS\Employee Management SystemTests\bin\Debug\.netcoreapp,version=v5.0\Logs\2021-11-19.txt'.
+Stacktrace:    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path)
+   at Employee_Management_System.Platform.PlatformHelpers.ReachedLoginAttemps(String emailId) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 418 
+ 
+2021-11-20 00:13:27 INFO  Log System Initialized 
+ 
+2021-11-20 00:13:28 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:13:28 ERROR Could not find a part of the path 'D:\.NET\EMS\Employee Management SystemTests\bin\Debug\.netcoreapp,version=v5.0\Logs\2021-11-19.txt'.
+Could not find a part of the path 'D:\.NET\EMS\Employee Management SystemTests\bin\Debug\.netcoreapp,version=v5.0\Logs\2021-11-19.txt'.
+Stacktrace:    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path)
+   at Employee_Management_System.Platform.PlatformHelpers.ReachedLoginAttemps(String emailId) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 420 
+ 
+2021-11-20 00:16:58 INFO  Log System Initialized 
+ 
+2021-11-20 00:16:59 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:16:59 INFO  Validation successful for user miketest@abc.com. 
+ 
+2021-11-20 00:20:08 INFO  Log System Initialized 
+ 
+2021-11-20 00:20:08 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:20:08 INFO  Validation successful for user miketest@abc.com. 
+ 
+2021-11-20 00:20:08 INFO  Validating user credentials for mikedab@abc.com 
+ 
+2021-11-20 00:20:08 INFO  Validating user credentials for  
+ 
+2021-11-20 00:23:55 INFO  Log System Initialized 
+ 
+2021-11-20 00:23:55 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:23:55 INFO  Validation successful for user miketest@abc.com. 
+ 
+2021-11-20 00:23:55 INFO  Validating user credentials for mikedab@abc.com 
+ 
+2021-11-20 00:23:55 INFO  Validating user credentials for  
+ 
+2021-11-20 00:23:55 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-20 00:23:55 WARN  User mike@abc.com failed 
+ 
+2021-11-20 00:25:39 INFO  Log System Initialized 
+ 
+2021-11-20 00:25:39 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:25:39 INFO  Validation successful for user miketest@abc.com. 
+ 
+2021-11-20 00:25:39 INFO  Validating user credentials for mikedab@abc.com 
+ 
+2021-11-20 00:25:39 INFO  Validating user credentials for  
+ 
+2021-11-20 00:25:39 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-20 00:25:40 WARN  User mike@abc.com failed 
+ 
+2021-11-20 00:25:40 INFO  Validating user credentials for           
+ 
+2021-11-20 00:25:40 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:50:12 INFO  Log System Initialized 
+ 
+2021-11-20 00:55:43 INFO  Log System Initialized 
+ 
+2021-11-20 00:55:44 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:55:44 INFO  Validation successful for user miketest@abc.com. 
+ 
+2021-11-20 00:55:44 INFO  Validating user credentials for mikedab@abc.com 
+ 
+2021-11-20 00:55:44 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:55:44 INFO  Validating user credentials for  
+ 
+2021-11-20 00:55:44 INFO  Validating user credentials for miketest@abc.com 
+
+2021-11-20 00:55:44 INFO  Validating user credentials for           
+ 
+2021-11-20 00:55:44 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:57:10 INFO  Log System Initialized 
+ 
+2021-11-20 00:57:10 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:57:11 INFO  Validation successful for user miketest@abc.com. 
+ 
+2021-11-20 00:57:11 INFO  Validating user credentials for mikedab@abc.com 
+ 
+2021-11-20 00:57:11 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:57:11 INFO  Validating user credentials for  
+ 
+2021-11-20 00:57:11 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 00:57:11 INFO  Validating user credentials for           
+ 
+2021-11-20 00:57:11 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 01:01:51 INFO  Log System Initialized 
+ 
+2021-11-20 01:01:52 INFO  Validating user credentials for abcd1@abc.com 
+ 
+2021-11-20 01:01:54 INFO  Validation successful for user abcd1@abc.com. 
+ 
+2021-11-20 01:02:41 INFO  Log System Initialized 
+ 
+2021-11-20 01:02:47 INFO  User abcd1@abc.com logged out 
+ 
+2021-11-20 01:18:38 INFO  Log System Initialized 
+ 
+2021-11-20 01:18:39 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 01:24:19 INFO  Log System Initialized 
+ 
+2021-11-20 01:24:21 INFO  Log System Initialized 
+ 
+2021-11-20 01:24:33 INFO  Validating user credentials for mike@abc.com 
+ 
+2021-11-20 01:24:34 INFO  Validation successful for user mike@abc.com. 
+ 
+2021-11-20 01:24:36 INFO  User mike@abc.com logged out 
+ 
+2021-11-20 01:24:58 INFO  Validating user credentials for abcd1@abc.com 
+ 
+2021-11-20 01:24:58 INFO  Validation successful for user abcd1@abc.com. 
+ 
+2021-11-20 01:31:30 INFO  Log System Initialized 
+ 
+2021-11-20 01:32:01 INFO  Log System Initialized 
+ 
+2021-11-20 01:32:02 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 01:32:02 INFO  Validation successful for user miketest@abc.com. 
+ 
+2021-11-20 01:32:02 INFO  Validating user credentials for mikedab@abc.com 
+ 
+2021-11-20 01:32:02 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 01:32:02 INFO  Validating user credentials for  
+ 
+2021-11-20 01:32:02 INFO  Validating user credentials for miketest@abc.com 
+
+2021-11-20 01:32:03 INFO  Validating user credentials for           
+ 
+2021-11-20 01:32:03 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 01:45:18 INFO  Log System Initialized 
+ 
+2021-11-20 01:45:19 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:45:51 INFO  Log System Initialized 
+ 
+2021-11-20 01:45:53 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:47:54 INFO  Log System Initialized 
+ 
+2021-11-20 01:47:55 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:47:55 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:49:55 INFO  Log System Initialized 
+ 
+2021-11-20 01:49:57 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:49:57 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:49:57 WARN  Invalid phone number enterd by mike1234 while registering. 
+ 
+2021-11-20 01:50:17 INFO  Log System Initialized 
+ 
+2021-11-20 01:50:19 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:50:19 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:50:19 WARN  Invalid phone number enterd by mike1234 while registering. 
+ 
+2021-11-20 01:54:43 INFO  Log System Initialized 
+ 
+2021-11-20 01:54:44 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:54:44 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:54:44 WARN  Invalid phone number enterd by mike1234 while registering. 
+ 
+2021-11-20 01:54:44 ERROR Error occurred while creating a user with email mike1234
+ValidationFailed: Unabled to validate the user.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 365
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:57:26 INFO  Log System Initialized 
+ 
+2021-11-20 01:58:19 INFO  Log System Initialized 
+ 
+2021-11-20 01:58:20 WARN  Password is not strong enough for user miketest1@abc.com 
+ 
+2021-11-20 01:59:20 INFO  Log System Initialized 
+ 
+2021-11-20 01:59:21 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 01:59:21 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:00:10 INFO  Log System Initialized 
+ 
+2021-11-20 02:00:11 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:00:11 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:00:11 WARN  Invalid phone number enterd by mike1234 while registering. 
+ 
+2021-11-20 02:00:11 ERROR Error occurred while creating a user with email mike1234
+ValidationFailed: Unabled to validate the user.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 365
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:01:23 INFO  Log System Initialized 
+ 
+2021-11-20 02:01:33 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:01:48 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:06:36 INFO  Log System Initialized 
+ 
+2021-11-20 02:06:38 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 383
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:06:38 WARN  Password is not strong enough for user miketest1@abc.com 
+ 
+2021-11-20 02:06:38 WARN  Invalid phone number enterd by miketest1@abc.com while registering. 
+ 
+2021-11-20 02:06:38 ERROR Error occurred while creating a user with email miketest1@abc.com
+ValidationFailed: Unabled to validate the user.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 365
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:09:31 INFO  Log System Initialized 
+ 
+2021-11-20 02:09:33 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 388
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:09:33 WARN  Password is not strong enough for user miketest1@abc.com 
+ 
+2021-11-20 02:09:33 WARN  Invalid phone number enterd by miketest1@abc.com while registering. 
+ 
+2021-11-20 02:09:33 WARN  Validation failed for miketest1@abc.com for ValidationFailed: Unabled to validate the user.
+First name contains invalid characters.
+ 
+ 
+2021-11-20 02:09:33 WARN  Validation failed for miketest1@abc.com for ValidationFailed: Unabled to validate the user.
+Last name contains invalid characters.
+ 
+ 
+2021-11-20 02:11:11 INFO  Log System Initialized 
+ 
+2021-11-20 02:11:12 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 388
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:11:12 WARN  Password is not strong enough for user miketest1@abc.com 
+ 
+2021-11-20 02:11:12 WARN  Invalid phone number enterd by miketest1@abc.com while registering. 
+ 
+2021-11-20 02:11:12 WARN  Validation failed for miketest1@abc.com for ValidationFailed: Unabled to validate the user.
+First name contains invalid characters.
+ 
+ 
+2021-11-20 02:11:12 WARN  Validation failed for miketest1@abc.com for ValidationFailed: Unabled to validate the user.
+Last name contains invalid characters.
+ 
+ 
+2021-11-20 02:11:12 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 02:13:07 INFO  Log System Initialized 
+ 
+2021-11-20 02:13:08 ERROR Error occurred while creating a user with email mike1234
+InvalidEmail: Invalid Email Passed.
+
+Stacktrace:    at Employee_Management_System.Platform.PlatformHelpers.CreateUser(RegisterViewModel userParams) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 388
+   at Employee_Management_System.Platform.PlatformHelpers.RegisterNewUser(RegisterViewModel registerUser) in D:\.NET\EMS\Employee Management System\Platform\PlatformHelpers.cs:line 280 
+ 
+2021-11-20 02:13:08 WARN  Password is not strong enough for user miketest1@abc.com 
+ 
+2021-11-20 02:13:08 WARN  Invalid phone number enterd by miketest1@abc.com while registering. 
+ 
+2021-11-20 02:13:08 WARN  Validation failed for miketest1@abc.com for ValidationFailed: Unabled to validate the user.
+First name contains invalid characters.
+ 
+ 
+2021-11-20 02:13:08 WARN  Validation failed for miketest1@abc.com for ValidationFailed: Unabled to validate the user.
+Last name contains invalid characters.
+ 
+ 
+2021-11-20 02:13:08 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 02:13:08 INFO  Validation successful for user miketest@abc.com. 
+ 
+2021-11-20 02:13:08 INFO  Validating user credentials for mikedab@abc.com 
+ 
+2021-11-20 02:13:08 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 02:13:08 WARN  User miketest@abc.com failed 
+ 
+2021-11-20 02:13:08 INFO  Validating user credentials for  
+ 
+2021-11-20 02:13:08 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 02:13:09 WARN  User miketest@abc.com failed 
+ 
+2021-11-20 02:13:09 INFO  Validating user credentials for           
+ 
+2021-11-20 02:13:09 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-20 02:14:10 INFO  Log System Initialized 
+ 
+2021-11-20 02:14:10 INFO  Validating user credentials for caster@abc.com 
+ 
+2021-11-20 02:14:11 INFO  Validation successful for user caster@abc.com. 
+ 
+2021-11-20 02:14:13 INFO  Log System Initialized 
+ 
+2021-11-20 02:14:13 INFO  User caster@abc.com logged out 
+ 

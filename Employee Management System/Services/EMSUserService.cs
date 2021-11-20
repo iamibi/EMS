@@ -18,6 +18,13 @@ namespace Employee_Management_System.Services
                 MongoClient client = new MongoClient(Database.EMSDbConnection);
                 IMongoDatabase database = client.GetDatabase(Database.EMSDb);
                 EMSUserCollection = database.GetCollection<EMSUser>(Database.EMSUsers);
+
+                // Create index
+                var options = new CreateIndexOptions() { Unique = true };
+                var field = new StringFieldDefinition<EMSUser>(EMSModels.EmailId);
+                var indexDefinition = new IndexKeysDefinitionBuilder<EMSUser>().Ascending(field);
+                var indexModel = new CreateIndexModel<EMSUser>(indexDefinition, options);
+                EMSUserCollection.Indexes.CreateOne(indexModel);
             }
             catch (Exception ex)
             {
@@ -94,14 +101,14 @@ namespace Employee_Management_System.Services
             EMSUserCollection.UpdateMany(EMSUser => EMSUser.ManagerEmailId == managerEmailId, update);
         }
 
-        public void RemoveEMSUserByEmail(string EmailId)
+        public void RemoveEMSUserByEmail(string emailId)
         {
-            EMSUserCollection.DeleteOne(EMSUser => EMSUser.EmailId == EmailId);
+            EMSUserCollection.DeleteOne(EMSUser => EMSUser.EmailId == emailId);
         }
 
-        public void RemoveEMSUserById(string EmployeeId)
+        public void RemoveEMSUserById(string employeeId)
         {
-            EMSUserCollection.DeleteOne(EMSUser => EMSUser.EmployeeId == EmployeeId);
+            EMSUserCollection.DeleteOne(EMSUser => EMSUser.EmployeeId == employeeId);
         }
     }
 }

@@ -19,6 +19,7 @@
         {
             @using (Html.BeginForm("EmployeeView", "EMS", FormMethod.Post))
             {
+                @Html.AntiForgeryToken()
                 <tr>
                     <td><label id="@task.TaskId">@task.TaskId</label></td>
                     <td>@Html.DisplayFor(em => task.TaskDescription)</td>

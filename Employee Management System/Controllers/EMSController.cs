@@ -17,12 +17,12 @@ namespace Employee_Management_System.Controllers
         public IActionResult Index()
         {
             string emailId = HttpContext.Session.GetString("username");
-            if (string.IsNullOrWhiteSpace(emailId)) return View();
+            if (string.IsNullOrWhiteSpace(emailId)) return View("Index");
             
             emailId = htmlSanitizer.Sanitize(emailId);
             ViewBag.username = emailId;
             EMSUser user = PlatformHelper.GetUser(emailId);
-            if (user == null) return View();
+            if (user == null) return View("Index");
             else if (user.Role == EMSUserRoles.Employee.ToString()) return EmployeeView();
             else if (user.Role == EMSUserRoles.Manager.ToString()) return ManagerView();
             else if (user.Role == EMSUserRoles.IT_Department.ToString()) return ITDepartmentView();
@@ -32,7 +32,7 @@ namespace Employee_Management_System.Controllers
 
         public ActionResult Register()
         {
-            return View();
+            return View("Register");
         }
 
         [HttpPost]
@@ -58,7 +58,7 @@ namespace Employee_Management_System.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            return View("Login");
         }
 
         [HttpPost]
@@ -88,7 +88,7 @@ namespace Employee_Management_System.Controllers
                 }
             }
             
-            return View();
+            return View("Error/Failure");
         }
 
         [HttpGet]
@@ -153,7 +153,7 @@ namespace Employee_Management_System.Controllers
         {
             if (!ModelState.IsValid) return View("Error/Failure");
             
-            return View();
+            return View("ManagerView");
         }
 
         public ActionResult AddUserToManager()
@@ -182,7 +182,6 @@ namespace Employee_Management_System.Controllers
         {
             if (!ModelState.IsValid) return View("Error/Failure");
             string emailId = HttpContext.Session.GetString("username");
-            if (!PlatformHelper.IsAdmin(emailId)) return View("Error/Failure");
 
             var users = PlatformHelper.GetAllUsers(emailId);
             ViewBag.Users = users;
@@ -204,14 +203,14 @@ namespace Employee_Management_System.Controllers
         [HttpGet]
         public ActionResult AccountRemoved()
         {
-            return View();
+            return View("AccountRemoved");
         }
 
         public ActionResult Logout()
         {
             string emailId = HttpContext.Session.GetString("username");
             
-            if (string.IsNullOrWhiteSpace(emailId)) return Login();
+            if (string.IsNullOrWhiteSpace(emailId)) return View("Login");
             logger.LogInformation($"User {htmlSanitizer.Sanitize(emailId)} logged out");
 
             foreach (var cookie in Request.Cookies.Keys)
@@ -220,7 +219,7 @@ namespace Employee_Management_System.Controllers
             }
             HttpContext.Session.Clear();
             
-            return RedirectToAction("Index");
+            return View("Logout");
         }
 
         [Route("/EMS/HandleError/{code:int}")]

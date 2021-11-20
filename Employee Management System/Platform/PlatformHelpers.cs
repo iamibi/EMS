@@ -23,6 +23,8 @@ namespace Employee_Management_System.Platform
             logger.LogInformation($"Validating user credentials for {htmlSanitizer.Sanitize(emailId)}");
 
             if (string.IsNullOrWhiteSpace(emailId) || string.IsNullOrWhiteSpace(password) || !Util.IsEmailValid(emailId)) return false;
+            if (emailId.Trim() != emailId || password.Trim() != password) return false;
+            if (htmlSanitizer.Sanitize(emailId) != emailId) return false;
 
             // Check the log file for failed attempts by that user.
             if (ReachedLoginAttemps(htmlSanitizer.Sanitize(emailId))) return false;
@@ -45,8 +47,9 @@ namespace Employee_Management_System.Platform
         public bool ValidateUser(string emailId)
         {
             if (string.IsNullOrWhiteSpace(emailId) || !Util.IsEmailValid(emailId)) return false;
-            emailId = htmlSanitizer.Sanitize(emailId);
-            EMSUser user = GetUser(emailId);
+            string cleanEmailId = htmlSanitizer.Sanitize(emailId.Trim());
+            if (cleanEmailId != emailId) return false;
+            EMSUser user = GetUser(cleanEmailId);
             if (user == null) return false;
             return true;
         }
@@ -220,7 +223,8 @@ namespace Employee_Management_System.Platform
 
         public void RemoveUser(string adminEmailId, string emailId)
         {
-            if (!Util.IsEmailValid(emailId)) throw new InvalidOperationException("The email id is not valid.");
+            if (!Util.IsEmailValid(emailId) || !Util.IsEmailValid(adminEmailId)) throw new InvalidOperationException("The email id is not valid.");
+            if (!IsAdmin(adminEmailId)) throw new InsufficientPrivileges();
 
             try
             {
@@ -260,11 +264,15 @@ namespace Employee_Management_System.Platform
             }
             catch (Exception ex)
             {
+                logger.LogError(Util.ExceptionWithBacktrace($"Error occurred while creating a user with email {emailId}", ex));
                 throw new DbFetchFailed(ex.Message, ex.InnerException);
             }
 
             if (user != null)
+            {
+                logger.LogWarning($"User {emailId} already exists on the platform");
                 throw new UserAlreadyExists();
+            }
 
             EMSUser storedUser;
             try
@@ -284,6 +292,11 @@ namespace Employee_Management_System.Platform
             catch (InvalidUserRole)
             {
                 logger.LogWarning($"Invalid User role for user {emailId}");
+                throw new ValidationFailed();
+            }
+            catch (ValidationFailed vf)
+            {
+                logger.LogWarning($"Validation failed for {emailId} for {vf.Message}");
                 throw new ValidationFailed();
             }
             catch (Exception ex)
@@ -309,7 +322,7 @@ namespace Employee_Management_System.Platform
 
                 // Remove the user from the database as task creation failed.
                 // This makes sure that we don't have inconsistent data in the database.
-                PlatformServices.UserService.RemoveEMSUserByEmail(storedUser.EmailId);
+                PlatformServices.UserService.RemoveEMSUserById(storedUser.EmployeeId);
 
                 throw new TaskCreationFailed(ex.Message);
             }
@@ -354,11 +367,11 @@ namespace Employee_Management_System.Platform
             DateTime currentTime = DateTime.UtcNow;
 
             string firstName = htmlSanitizer.Sanitize(userParams.FirstName);
-            if (string.IsNullOrWhiteSpace(firstName) || !Util.IsNameValid(firstName)) throw new ValidationFailed();
+            if (string.IsNullOrWhiteSpace(firstName) || !Util.IsNameValid(firstName)) throw new ValidationFailed("First name contains invalid characters.");
             newUser.FirstName = firstName.Trim();
 
             string lastName = htmlSanitizer.Sanitize(userParams.LastName);
-            if (string.IsNullOrWhiteSpace(lastName) || !Util.IsNameValid(lastName)) throw new ValidationFailed();
+            if (string.IsNullOrWhiteSpace(lastName) || !Util.IsNameValid(lastName)) throw new ValidationFailed("Last name contains invalid characters.");
             newUser.LastName = lastName;
 
             // Set the created and updated at date time to current date time.
@@ -414,7 +427,7 @@ namespace Employee_Management_System.Platform
 
             try
             {
-                using (StreamReader file = new StreamReader($"Logs\\{logEntryDate}"))
+                using (StreamReader file = new StreamReader($"D:\\.NET\\EMS\\Employee Management System\\Logs\\{logEntryDate}"))
                 {
                     string fileContents = file.ReadToEnd();
                     Regex rx = new(pattern);
