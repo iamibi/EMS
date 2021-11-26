@@ -1,0 +1,50 @@
+2021-11-25 21:06:14 INFO  Log System Initialized 
+ 
+2021-11-25 21:06:15 INFO  Validating user credentials for caster@abc.com 
+ 
+2021-11-25 21:06:17 INFO  Validation successful for user caster@abc.com. 
+ 
+2021-11-25 21:07:29 INFO  Log System Initialized 
+ 
+2021-11-25 21:07:29 INFO  User caster@abc.com logged out 
+ 
+2021-11-25 21:07:45 INFO  Validating user credentials for abcd@abc.com 
+ 
+2021-11-25 21:07:46 INFO  Validation successful for user abcd@abc.com. 
+ 
+2021-11-25 21:08:01 INFO  User abcd@abc.com logged out 
+ 
+2021-11-25 21:08:24 WARN  Invalid phone number enterd by mark@abc.com while registering. 
+ 
+2021-11-25 21:10:42 INFO  Log System Initialized 
+ 
+2021-11-25 21:10:42 INFO  Validating user credentials for abcd1@abc.com 
+ 
+2021-11-25 21:10:44 INFO  Validation successful for user abcd1@abc.com. 
+ 
+2021-11-25 21:11:20 INFO  Log System Initialized 
+ 
+2021-11-25 21:11:26 INFO  User abcd1@abc.com logged out 
+ 
+2021-11-25 21:22:27 INFO  Log System Initialized 
+ 
+2021-11-25 21:22:28 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-25 21:22:28 INFO  Validation successful for user miketest@abc.com. 
+ 
+2021-11-25 21:22:28 INFO  Validating user credentials for mikedab@abc.com 
+ 
+2021-11-25 21:22:28 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-25 21:22:28 WARN  User miketest@abc.com failed 
+ 
+2021-11-25 21:22:28 INFO  Validating user credentials for  
+ 
+2021-11-25 21:22:28 INFO  Validating user credentials for miketest@abc.com 
+ 
+2021-11-25 21:22:29 WARN  User miketest@abc.com failed 
+ 
+2021-11-25 21:22:29 INFO  Validating user credentials for           
+ 
+2021-11-25 21:22:29 INFO  Validating user credentials for miketest@abc.com 
+ 

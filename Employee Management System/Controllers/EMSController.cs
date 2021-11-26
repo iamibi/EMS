@@ -110,8 +110,9 @@ namespace Employee_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                string emailId = HttpContext.Session.GetString("username").Trim();
-                if (emailId == string.Empty) return View("Error/Failure");
+                string emailId = HttpContext.Session.GetString("username");
+                if (string.IsNullOrWhiteSpace(emailId)) return View("Error/Failure");
+                emailId = emailId.Trim();
 
                 string taskString = form["task.Status"];
                 if (string.IsNullOrWhiteSpace(taskString)) return View("Error/Failure");
@@ -166,8 +167,10 @@ namespace Employee_Management_System.Controllers
         [HttpPost]
         public ActionResult AddUserToManager(string emailId)
         {
+            if (!ModelState.IsValid) return View("Error/Failure");
+
             string managerEmailId = HttpContext.Session.GetString("username");
-            if (emailId != null && emailId.Trim() != string.Empty && managerEmailId != null && managerEmailId.Trim() != string.Empty)
+            if (!string.IsNullOrWhiteSpace(emailId) && !string.IsNullOrWhiteSpace(managerEmailId))
             {
                 PlatformHelper.AddUserForManager(managerEmailId, emailId);
                 HttpContext.Session.SetString("first_name", emailId);
